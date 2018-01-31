@@ -1,0 +1,178 @@
+﻿<div *ngIf="carData">
+    <form [formGroup]="carForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="90">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Car information</h4>
+                    </div>
+
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="CarNo" class="col-sm-2 control-label"> CarNo : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="CarNo" required
+                                   id="CarNo" formControlName="CarNo"
+                                   [readonly]="carForm.controls.Creator.value !== null">
+                            <div *ngIf="formErrors.CarNo" class="alert alert-danger">
+                                {{ formErrors.CarNo }}
+                            </div>
+                        </div>
+
+                        <label for="CarTypeId" class="col-sm-2 control-label"> Car Type : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="carTypes" filter="filter" [style]="{'width':'100%'}"
+                                        id="CarTypeId" formControlName="CarTypeId"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                            <div *ngIf="formErrors.CarTypeId" class="alert alert-danger">
+                                {{ formErrors.CarTypeId }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm">
+                        <label for="CarBrand" class="col-sm-2 control-label"> Car Brand : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="carBrands" filter="filter" [style]="{'width':'100%'}"
+                                        id="CarBrand" formControlName="CarBrand"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                            <div *ngIf="formErrors.CarBrand" class="alert alert-danger">
+                                {{ formErrors.CarBrand }}
+                            </div>
+                        </div>
+
+                        <label for="RegisterNo" class="col-sm-2 control-label"> Register No. : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Register No"
+                                   id="RegisterNo" formControlName="RegisterNo">
+                            <div *ngIf="formErrors.RegisterNo" class="alert alert-danger">
+                                {{ formErrors.RegisterNo }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row3-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="CarWeight" class="col-sm-2 control-label"> Car Weight(ton.) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" placeholder="Car Weight"
+                                   id="CarWeight" formControlName="CarWeight">
+                            <div *ngIf="formErrors.CarWeight" class="alert alert-danger">
+                                {{ formErrors.CarWeight }}
+                            </div>
+                        </div>
+
+                        <label for="CarDate" class="col-sm-2 control-label"> Car Date : </label>
+                        <div class="col-sm-4">
+                            <p-calendar formControlName="CarDate" [showIcon]="true" required
+                                        id="CarDate" dateFormat="dd/M/yy">
+                            </p-calendar>
+                            <span class="is-request-date">**</span>
+
+                        </div>
+                    </div>
+
+                    <!--Row4-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="Insurance" class="col-sm-2 control-label"> Insurance. : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Insurance No"
+                                   id="Insurance" formControlName="Insurance">
+                            <div *ngIf="formErrors.Insurance" class="alert alert-danger">
+                                {{ formErrors.Insurance }}
+                            </div>
+                        </div>
+
+                        <label for="InsurDate" class="col-sm-2 control-label"> Expiry Date : </label>
+                        <div class="col-sm-4">
+                            <p-calendar formControlName="InsurDate" [showIcon]="true" required
+                                        id="InsurDate" dateFormat="dd/M/yy">
+                            </p-calendar>
+                            <span class="is-request-date">**</span>
+
+                        </div>
+                    </div>
+
+                    <!--Row5-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="ActInsurance" class="col-sm-2 control-label"> Act-Insurance. : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Act-Insurance No"
+                                   id="ActInsurance" formControlName="ActInsurance">
+                            <div *ngIf="formErrors.ActInsurance" class="alert alert-danger">
+                                {{ formErrors.ActInsurance }}
+                            </div>
+                        </div>
+
+                        <label for="ActDate" class="col-sm-2 control-label"> Expiry Date : </label>
+                        <div class="col-sm-4">
+                            <p-calendar formControlName="ActDate" [showIcon]="true" required
+                                        id="ActDate" dateFormat="dd/M/yy">
+                            </p-calendar>
+                            <span class="is-request-date">**</span>
+
+                        </div>
+                    </div>
+
+                    <!--Row6-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="Remark" class="col-sm-2 control-label"> Remark : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Remark"
+                                   id="Remark" formControlName="Remark">
+                            <div *ngIf="formErrors.Remark" class="alert alert-danger">
+                                {{ formErrors.Remark }}
+                            </div>
+                        </div>
+
+                        <label for="Status" class="col-sm-2 control-label"> Status : </label>
+                        <div class="col-sm-4">
+                            <div class="form-control no-border">
+                                <md-checkbox color="primary"
+                                             id="Status" formControlName="Status">
+                                    Use
+                                </md-checkbox>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row6.2-->
+                    <div *ngIf="CanChangeCompany" class="form-group form-group-sm">
+                        <label for="CompanyID" class="col-sm-2 control-label"> Branch : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="companys" filter="filter" [style]="{'width':'100%'}"
+                                        id="CompanyID" formControlName="CompanyID"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                    <!--Row7-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="ImageFile" class="col-sm-2 control-label"> Image : </label>
+                        <div class="col-sm-4">
+                            <input type="file" accept="image/*" class="form-control"
+                                   id="ImageFile" #ImageFile
+                                   (change)="onFileUploadChange($event)">
+                        </div>
+                        <div class="col-sm-6">
+                            <img [src]="carForm.controls.ImagesString.value" class="size-img" />
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="10">
+                <div>
+                    <p>wait for information</p>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<div *ngIf="!carData">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of car-data.
+</div>

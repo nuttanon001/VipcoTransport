@@ -1,0 +1,51 @@
+﻿<div *ngIf="employee" class="detail-content">
+    <split direction="vertical">
+        <split-area [size]="95">
+            <div class="col-sm-12 detail-view">
+                <div class="col-sm-12 header-detail-view">
+                    <h4>Employee information</h4>
+                </div>
+                <!--Row 1-->
+                <div class="col-sm-12">
+                    <div class="col-sm-2 display-label">
+                        EmployeeCode :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{employee.EmpCode || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 2-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Name thai:
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{employee.NameThai || "-"}}
+                    </div>
+
+                    <div class="col-sm-2 display-label">
+                        Name english:
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{employee.NameEng || "-"}}
+                    </div>
+                </div>
+                <!--space buttom-->
+                <div class="col-sm-12 top-buffer">
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="5">
+            <div>
+                <p>
+                    wait for information
+                </p>
+            </div>
+        </split-area>
+    </split>
+</div>
+<div *ngIf="!employee">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    View information of employee.
+</div>

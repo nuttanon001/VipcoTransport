@@ -1,0 +1,48 @@
+﻿<div class="table-responsive" style="padding-top:0px; top:0px;">
+    <table class="table table-hover">
+        <colgroup>
+            <col span="1" style="width: 140px;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th *ngFor="let column of columns">
+                    {{column}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of data">
+                <td *ngFor="let column of columns">
+                    <div *ngIf="column === 'To'">
+                        <i>{{data[column]}}</i>
+                    </div>
+                    <div *ngIf="column !== 'To'">
+                        <div *ngIf="data[column]">
+                            <md-progress-bar mode="determinate" color="accent" value="100" style="height:20px;cursor:pointer;"
+                                             (click)="onClick(data[column])" mdTooltip="Click for detail">
+                            </md-progress-bar>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p-dialog header="" [(visible)]="display" modal="modal" width="1050" height="600"
+              responsive="true" dismissableMask="true">
+        <p-header>
+            <i class="fa fa-2x fa-info" aria-hidden="true" style="color:steelblue;margin-right:5px;"></i>
+             รายละเอียดใข้งานรถยนต์
+        </p-header>
+        <div>
+
+        </div>
+        <div *ngIf="typeTransport; else elseBlock">
+            <details></details>
+            <!--<transport-data-detail-view></transport-data-detail-view>-->
+        </div>
+        <ng-template #elseBlock>
+            <detail-truck></detail-truck>
+            <!--<transport-data-truck-detail-view></transport-data-truck-detail-view>-->
+        </ng-template>
+    </p-dialog>
+</div>

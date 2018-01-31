@@ -1,0 +1,13 @@
+﻿<div class="master-content">
+    <div class="media">
+        <div class="media-body">
+            <div *ngIf="typeTransport; else elseBlock">
+                <transport-data-detail-view></transport-data-detail-view>
+            </div>
+            <ng-template #elseBlock>
+                <transport-data-truck-detail-view></transport-data-truck-detail-view>
+            </ng-template>
+        </div>
+    </div>
+</div>
+

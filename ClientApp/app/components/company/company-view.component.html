@@ -1,0 +1,58 @@
+﻿<div *ngIf="displayValue,else elseBlock" class="panel panel-info small">
+    <div class="panel-heading">
+        <h4>Information of branch</h4>
+    </div>
+    <div class="panel-body">
+        <div class="col-sm-12 top-buffer">
+            <!--Row1-->
+            <div class="col-sm-2 display-label">
+                Branch Code :
+            </div>
+            <div class="col-sm-4 value-box">
+                {{displayValue.CompanyCode || "-"}}
+            </div>
+            <div class="col-sm-2 display-label">
+                Branch Name :
+            </div>
+            <div class="col-sm-4 value-box">
+                {{displayValue.CompanyName || "-"}}
+            </div>
+        </div>
+        <div class="col-sm-12 top-buffer">
+            <!--Row2-->
+            <div class="col-sm-2 display-label">
+                Address1 :
+            </div>
+            <div class="col-sm-4 value-box">
+                {{displayValue.Address1 || "-"}}
+            </div>
+
+            <div class="col-sm-2 display-label">
+                Address2 :
+            </div>
+            <div class="col-sm-4 value-box">
+                {{displayValue.Address2 || "-"}}
+            </div>
+        </div>
+        <div class="col-sm-12 top-buffer">
+            <!--Row3-->
+            <div class="col-sm-2 display-label">
+                Telephone :
+            </div>
+            <div class="col-sm-4 value-box">
+                {{displayValue.Telephone || "-"}}
+            </div>
+
+            <div class="col-sm-2 display-label">
+                Create Date :
+            </div>
+            <div class="col-sm-4 value-box">
+                {{(displayValue.CreateDate | date:'dd/MM/yyyy') || "-"}}
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <md-progress-bar mode="indeterminate" style="margin-top:50px;"></md-progress-bar>
+    View information of branch.
+</ng-template>

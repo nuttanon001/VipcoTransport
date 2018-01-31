@@ -1,0 +1,51 @@
+﻿<div *ngIf="location" class="detail-content">
+    <split direction="vertical">
+        <split-area [size]="95">
+            <div class="col-sm-12 detail-view">
+                <div class="col-sm-12 header-detail-view">
+                    <h4>Location location information</h4>
+                </div>
+                <!--Row 1-->
+                <div class="col-sm-12">
+                    <div class="col-sm-2 display-label">
+                        LocationCode :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{location.LocationCode || "-"}}
+                    </div>
+
+                    <div class="col-sm-2 display-label">
+                        Location Name :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{location.LocationName || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 2-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Location Address:
+                    </div>
+                    <div class="col-sm-10 value-box">
+                        {{location.LocationAddress || "-"}}
+                    </div>
+                </div>
+                <!--space buttom-->
+                <div class="col-sm-12 top-buffer">
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="5">
+            <div>
+                <p>
+                    wait for information
+                </p>
+            </div>
+        </split-area>
+    </split>
+</div>
+<div *ngIf="!location">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    View information of location.
+</div>

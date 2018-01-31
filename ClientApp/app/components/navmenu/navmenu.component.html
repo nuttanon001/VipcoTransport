@@ -1,0 +1,186 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="fa fa-2x fa-navicon"></span>
+            </button>
+            <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active">
+                <img src="/images/logoVIPCO.png" alt="Vipco" width="36" height="36">
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <a class="header-title" routerLink="./documentcenter" routerLinkActive="active">
+                        Vipco Transport System
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-left" style="padding-left:50px;">
+                <!--<li>
+                    <a [routerLink]="['/home']">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        Home
+                    </a>
+                </li>-->
+                <li>
+                    <a  [routerLink]="['/schedule']">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <span>Transport Schedule</span>
+                    </a>
+                </li>
+                <!--transport-request-->
+                <li *ngIf="GetLevel1">
+                    <a #trigger1="mdMenuTrigger" [mdMenuTriggerFor]="menu1" (onMenuOpen)="menuOnCloseMenu1()" (mouseover)="menuOnOpenMenu1()">
+                        <i class="fa fa-automobile" aria-hidden="true"></i>
+                        <!--<span class="glyphicon glyphicon-road"></span>-->
+                        Transport-Requested
+                    </a>
+                    <md-menu #menu1="mdMenu">
+                        <div style="padding-top: 51px;">
+                            <button md-menu-item [routerLink]="['/transport-request']">
+                                <!--<md-icon>filter_1</md-icon>-->
+                                <i class="fa fa-share-square" aria-hidden="true"></i>
+                                <span>Transport Requested</span>
+                            </button>
+                            <!--<button md-menu-item [routerLink]="['/schedule']">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                <span>Transport Schedule</span>
+                            </button>-->
+                        </div>
+                        <div *ngIf="GetLevel3">
+                            <hr />
+                            <button md-menu-item [routerLink]="['/transport-request/admin/3']">
+                                <i class="fa fa-share-square" aria-hidden="true"></i>
+                                <span>Transport Requested(Admin)</span>
+                            </button>
+                        </div>
+                    </md-menu>
+                </li>
+                <!--transport-->
+                <li *ngIf="GetLevel2">
+                    <a #trigger2="mdMenuTrigger" [mdMenuTriggerFor]="menu2" (onMenuOpen)="menuOnCloseMenu2()" (mouseover)="menuOnOpenMenu2()">
+                        <i class="fa fa-rocket" aria-hidden="true"></i>
+                        <!--<span class="glyphicon glyphicon-road"></span>-->
+                        Transportation
+                    </a>
+                    <md-menu #menu2="mdMenu">
+                        <div style="padding-top: 51px;">
+                            <button md-menu-item [routerLink]="['/transport-request/request-waiting']">
+                                <!--<md-icon>filter_2</md-icon>-->
+                                <i class="fa fa-history" aria-hidden="true"></i>
+                                <span>Transport Requested Waiting</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/transport-data']">
+                                <i class="fa fa-car" aria-hidden="true"></i>
+                                <span>Transport Car</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/transport-data-truck']">
+                                <i class="fa fa-truck" aria-hidden="true"></i>
+                                <span>Transport Truck</span>
+                            </button>
+                        </div>
+                        <div *ngIf="GetLevel3">
+                            <hr />
+                            <button md-menu-item [routerLink]="['/transport-data/admin/3']">
+                                <i class="fa fa-car" aria-hidden="true"></i>
+                                <span>Transport Car(Admin)</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/transport-data-truck/admin/3']">
+                                <i class="fa fa-truck" aria-hidden="true"></i>
+                                <span>Transport Truck(Admin)</span>
+                            </button>
+                        </div>
+                    </md-menu>
+                </li>
+                <!--data-->
+                <li *ngIf="GetLevel2">
+                    <a #trigger3="mdMenuTrigger" [mdMenuTriggerFor]="menu3" (onMenuOpen)="menuOnCloseMenu3()" (mouseover)="menuOnOpenMenu3()">
+                        <i class="fa fa-gears" aria-hidden="true"></i>
+                        System
+                    </a>
+                    <md-menu #menu3="mdMenu">
+                        <div style="padding-top: 51px;">
+                            <button md-menu-item [routerLink]="['/car-data']">
+                                <i class="fa fa-car" aria-hidden="true"></i>
+                                <span>Car Data</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/trailer']">
+                                <i class="fa fa-truck" aria-hidden="true"></i>
+                                <span>Trailer Truck</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/brand']">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                <span>Brand</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/type']">
+                                <i class="fa fa-toggle-off" aria-hidden="true"></i>
+                                <span>Type of Car</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/driver']">
+                                <i class="fa fa-drivers-license-o" aria-hidden="true"></i>
+                                <span>Driver</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/user']">
+                                <i class="fa fa-child" aria-hidden="true"></i>
+                                <span>User of system</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/location']">
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                <span>Location</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/contact']">
+                                <i class="fa fa-tasks" aria-hidden="true"></i>
+                                <span>Contact</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/company']">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span>Branch</span>
+                            </button>
+                        </div>
+
+                        <div *ngIf="GetLevel3">
+                            <hr />
+                            <button md-menu-item [routerLink]="['/car-data/admin/3']">
+                                <i class="fa fa-car" aria-hidden="true"></i>
+                                <span>CarData(Admin)</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/trailer/admin/3']">
+                                <i class="fa fa-truck" aria-hidden="true"></i>
+                                <span>Trailer Truck(Admin)</span>
+                            </button>
+                            <button md-menu-item [routerLink]="['/driver/admin/3']">
+                                <i class="fa fa-drivers-license-o" aria-hidden="true"></i>
+                                <span>Driver(Admin)</span>
+                            </button>
+                        </div>
+                    </md-menu>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="!authService.getUser; else elseBlock">
+                    <a [routerLink]="['/login']">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        <!--<span class='glyphicon glyphicon-log-in'></span>-->
+                        Login
+                    </a>
+                </li>
+                <ng-template #elseBlock>
+                    <li>
+                        <a [routerLink]="['/user/userconfig/']">
+                            Welcome <i>{{authService.getUser.FirstName}}</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="onLogOut()">
+                            <em class="fa fa-sign-out" aria-hidden="true"></em>
+                            Logout
+                        </a>
+                    </li>
+                </ng-template>
+            </ul>
+        </div>
+    </div>
+</nav>

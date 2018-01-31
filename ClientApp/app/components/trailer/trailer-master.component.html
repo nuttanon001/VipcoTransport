@@ -1,0 +1,72 @@
+﻿<div class="master-content">
+    <split direction="horizontal">
+        <split-area [size]="30">
+            <div class="left-col">
+                <div>
+                    <form [formGroup]="trailerForm" style="width:100%;">
+                        <div>
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <md-input-container>
+                                <input formControlName="search" mdInput placeholder="Search here ..." #gb>
+                            </md-input-container>
+                        </div>
+                    </form>
+                </div>
+                <div class="shadowbox">
+                    <!--scrollable="true" [scrollHeight]="scrollHeight"-->
+                    <p-dataTable [value]="trailers" selectionMode="single" resizableColumns="true"
+                                 [(selection)]="trailer" (onRowSelect)="onDetailView()"
+                                 scrollable="true" [scrollHeight]="scrollHeight"
+                                 [globalFilter]="gb" [rows]="100" virtualScroll="virtualScroll" [lazy]="true" (onLazyLoad)="loadData($event,table)" [totalRecords]="totalRow">
+                        <p-header>There are {{totalRow}} trailer(s)</p-header>
+                        <p-column field="RowNumber" header="no." [style]="{'width':'10%'}"></p-column>
+                        <p-column field="TrailerNo" header="เทรลเลอร์" [sortable]="true" [style]="{'width':'15%'}"></p-column>
+                        <p-column field="TrailerTypeDesc" header="ประเภท" [sortable]="true"></p-column>
+                        <p-column field="TrailerBrandDesc" header="ยี่ห้อ" [sortable]="true"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="70">
+            <div class="right-col">
+                <div *ngIf="trailer; else elseBlock">
+                    <div *ngIf="!showEdit; else detailEdit">
+                        <trailer-detail-view></trailer-detail-view>
+                    </div>
+                    <ng-template #detailEdit>
+                        <trailer-detail-edit></trailer-detail-edit>
+                    </ng-template>
+                </div>
+                <ng-template #elseBlock>
+                    <h4>
+                        Selected trailer data from list to show information
+                    </h4>
+                </ng-template>
+            </div>
+            <div class="right-menu">
+                <div>
+                    <button type="button" md-mini-fab color="primary" (click)="onDetailEdit()" [disabled]="showEdit" mdTooltip="Create new" mdTooltipPosition="left">
+                        <i class="fa fa-2x fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" md-mini-fab color="primary" (click)="onDetailEdit(trailer)" [disabled]="showEdit || TrailerNull" mdTooltip="Edit" mdTooltipPosition="left">
+                        <i class="fa fa-2x fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <hr />
+                    <button type="button" md-mini-fab color="warn" (click)="onCancelEdit()" [disabled]="!showEdit" mdTooltip="Cancel" mdTooltipPosition="left">
+                        <i class="fa fa-2x fa-minus" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" md-mini-fab color="accent" (click)="onSubmit()" [disabled]="!canSave" mdTooltip="Save" mdTooltipPosition="left">
+                        <i class="fa fa-2x fa-floppy-o" aria-hidden="true"></i>
+                    </button>
+                    <hr />
+                    <button type="button" md-mini-fab color="primary" (click)="onDetailPrint(trailer)" disabled mdTooltip="Report" mdTooltipPosition="left">
+                        <i class="fa fa-2x fa-file-o" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" md-mini-fab color="primary" (click)="onListPrint()" disabled mdTooltip="Report(2)" mdTooltipPosition="left">
+                        <i class="fa fa-2x fa-share" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </split-area>
+    </split>
+</div>

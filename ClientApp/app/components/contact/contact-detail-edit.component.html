@@ -1,0 +1,54 @@
+﻿<div *ngIf="contact">
+    <form [formGroup]="contactForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="95">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Contact information</h4>
+                    </div>
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="ContactName" class="col-sm-2 control-label"> Contact Name : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Contact Name" required
+                                   id="ContactName" formControlName="ContactName">
+                            <div *ngIf="formErrors.ContactName" class="alert alert-danger">
+                                {{ formErrors.ContactName }}
+                            </div>
+                        </div>
+
+                        <label for="ContactPhone" class="col-sm-2 control-label"> Contact Phone : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Contact Phone"
+                                   id="ContactPhone" formControlName="ContactPhone">
+                            <div *ngIf="formErrors.ContactPhone" class="alert alert-danger">
+                                {{ formErrors.ContactPhone }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm">
+                        <label for="Location" class="col-sm-2 control-label"> Location : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="locations" filter="filter" [style]="{'width':'100%'}"
+                                        id="Location" formControlName="Location"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="5">
+                <div>
+                    <p>wait for information</p>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<div *ngIf="!contact">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of contact.
+</div>

@@ -1,0 +1,56 @@
+﻿<div *ngIf="employee">
+    <form [formGroup]="employeeForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="95">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Employee information</h4>
+                    </div>
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="EmpCode" class="col-sm-2 control-label"> Employee Code : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Employee Code" required
+                                   id="EmpCode" formControlName="EmpCode"
+                                   [readonly]="employeeForm.controls.EmployeeId.value !== null">
+                            <div *ngIf="formErrors.EmpCode" class="alert alert-danger">
+                                {{ formErrors.EmpCode }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm">
+                        <label for="NameThai" class="col-sm-2 control-label"> Name Thai. : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Name Thai" required
+                                   id="NameThai" formControlName="NameThai">
+                            <div *ngIf="formErrors.NameThai" class="alert alert-danger">
+                                {{ formErrors.NameThai }}
+                            </div>
+                        </div>
+
+                        <label for="NameEng" class="col-sm-2 control-label"> Name English : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Name English"
+                                   id="NameEng" formControlName="NameEng">
+                            <div *ngIf="formErrors.NameEng" class="alert alert-danger">
+                                {{ formErrors.NameEng }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="5">
+                <div>
+                    <p>wait for information</p>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<div *ngIf="!employee">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of employee.
+</div>

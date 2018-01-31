@@ -1,0 +1,126 @@
+﻿<div>
+    <div class="detail">
+        <h4>Transport Request Wating...</h4><hr />
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box2">
+                    <md-checkbox color="primary" [(ngModel)]="condition" (change)="onGetData()">
+                        Current date only.
+                    </md-checkbox>
+                </div>
+                <div class="box1">
+                    |
+                    <!--<md-icon color="primary">timer</md-icon>-->
+                    <!--<span class='glyphicon glyphicon-time'></span>-->
+                    Reload data in {{message}} sec.
+                </div>
+                <div class="box2" style="width:100%;">
+                    <md-progress-bar color="primary" [value]="count" mode="determinate">
+                    </md-progress-bar>
+                </div>
+            </div>
+            <!--<div class="col-sm-2">
+                <p-calendar [(ngModel)]="scheduleWeekly.EndDate" [showIcon]="true" dateFormat="dd/mm/yy"
+                            (onSelect)="onEndDateChange()">
+                </p-calendar>
+            </div>-->
+        </div>
+    </div>
+    <div class="shadowbox">
+        <!--scrollable="true" [scrollHeight]="scrollHeight"-->
+        <p-dataTable [value]="schedules" sortField="Type" rowGroupMode="rowspan"
+                     [scrollHeight]="scrollHeight" scrollWidth="98.5vw" scrollable="true">
+            <p-column *ngFor="let column of columnNames" [field]="column.field" [styleClass]="column.styleclass"
+                      [header]="column.header" [style]="column.style" [sortable]="true">
+                <ng-template *ngIf="column.isButton" let-col let-data1="rowData" pTemplate="body">
+                    <div *ngIf="data1[col.field]">
+                        <i>{{data1[col.field]}}</i>
+                        <!--<i>{{data1[col.field] | slice:0:13}} ...</i>-->
+                        <button style="margin-left:10px;" type="button" md-mini-fab color="primary" mdTooltip="More detail"
+                                (click)="onSelectData(data1[col.field],col.field,data1['Employee'])">
+                            <!--<md-icon>search</md-icon>-->
+                            <i class="fa fa-2x fa-search" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="accent" mdTooltip="Add to transport data"
+                                (click)="onRequestToData(data1[col.field],data1['Employee'])">
+                            <!--<md-icon>add</md-icon>-->
+                            <i class="fa fa-2x fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="warn" mdTooltip="Cancel request"
+                                (click)="onCancelData(data1[col.field],data1['Employee'])">
+                            <i class="fa fa-2x fa-minus" aria-hidden="true"></i>
+                            <!--<md-icon>remove</md-icon>-->
+                        </button>
+                    </div>
+                    <div *ngIf="!data1[col.field]">
+                        -
+                    </div>
+                </ng-template>
+            </p-column>
+        </p-dataTable>
+    </div>
+    <p-dialog [(visible)]="display" modal="modal" positionTop="150px"
+              width="1050" height="680" responsive="true" dismissableMask="true">
+        <transport-request-detail-view></transport-request-detail-view>
+    </p-dialog>
+    <p-dialog [(visible)]="showListTransport" modal="modal" positionTop="150"
+              width="1050" height="500" responsive="true" dismissableMask="true"
+              header="List of Transport data">
+            <div *ngIf="transportDatas.length > 0" class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            Set this requested same route in list below.
+                        </div>
+                        <div class="col col-xs-6 text-right">
+                            <button type="button" class="btn btn-sm btn-primary btn-create"
+                                    mdTooltip="Create Transport-Data" (click)="newTransportData()">
+                                Create new transport
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table class="table table-hover table-sm" style="margin:0px;padding:0px;">
+                        <thead>
+                            <tr>
+                                <th>No|Car|Driver</th>
+                                <th>Type</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Date/Time</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of transportDatas">
+                                <td>
+                                    {{data.TransportNo}} | {{data.CarInfo}} | {{data.EmployeeeDriverString}}
+                                </td>
+                                <td>
+                                    {{data.TransportTypeString}}
+                                </td>
+                                <td>
+                                    {{data.SoureString}}
+                                </td>
+                                <td>
+                                    {{data.DestinationString}}
+                                </td>
+                                <td>
+                                    {{(data.TransDate| date:'dd/MM/yyyy HH:mm') || "-"}}
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-default" (click)="sameTransportData(data.TransportId)"  mdTooltip="Take the same route">
+                                        <em class="fa fa-link"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <i>Total {{transportDatas.length}} list.</i>
+                </div>
+            </div>
+    </p-dialog>
+</div>

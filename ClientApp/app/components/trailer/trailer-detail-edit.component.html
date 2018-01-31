@@ -1,0 +1,156 @@
+﻿<div *ngIf="trailer">
+    <form [formGroup]="trailerForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="90">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Trailer information</h4>
+                    </div>
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="TrailerNo" class="col-sm-2 control-label"> TrailerNo : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="TrailerNo" required
+                                   id="TrailerNo" formControlName="TrailerNo"
+                                   [readonly]="trailerForm.controls.Creator.value !== null">
+                            <div *ngIf="formErrors.TrailerNo" class="alert alert-danger">
+                                {{ formErrors.TrailerNo }}
+                            </div>
+                        </div>
+
+                        <label for="CarTypeId" class="col-sm-2 control-label"> Car Type : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="carTypes" filter="filter" [style]="{'width':'100%'}"
+                                        id="CarTypeId" formControlName="CarTypeId"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                            <div *ngIf="formErrors.CarTypeId" class="alert alert-danger">
+                                {{ formErrors.CarTypeId }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm">
+                        <label for="TrailerBrand" class="col-sm-2 control-label"> Car Brand : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="carBrands" filter="filter" [style]="{'width':'100%'}"
+                                        id="TrailerBrand" formControlName="TrailerBrand"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                            <div *ngIf="formErrors.TrailerBrand" class="alert alert-danger">
+                                {{ formErrors.TrailerBrand }}
+                            </div>
+                        </div>
+
+                        <label for="RegisterNo" class="col-sm-2 control-label"> Register No. : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Register No"
+                                   id="RegisterNo" formControlName="RegisterNo">
+                            <div *ngIf="formErrors.RegisterNo" class="alert alert-danger">
+                                {{ formErrors.RegisterNo }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row3-->
+                    <div class="form-group form-group-sm">
+                        <label for="TrailerWeight" class="col-sm-2 control-label"> Trailer Weight(ton.) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" placeholder="Trailer Weight"
+                                   id="TrailerWeight" formControlName="TrailerWeight">
+                            <div *ngIf="formErrors.TrailerWeight" class="alert alert-danger">
+                                {{ formErrors.TrailerWeight }}
+                            </div>
+                        </div>
+
+                        <label for="TrailerLoad" class="col-sm-2 control-label"> Trailer Load(ton.) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" placeholder="Trailer Load"
+                                   id="TrailerLoad" formControlName="TrailerLoad">
+                            <div *ngIf="formErrors.TrailerLoad" class="alert alert-danger">
+                                {{ formErrors.TrailerLoad }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row4-->
+                    <div class="form-group form-group-sm">
+                        <label for="Insurance" class="col-sm-2 control-label"> Insurance. : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Model No"
+                                   id="Insurance" formControlName="Insurance">
+                            <div *ngIf="formErrors.Insurance" class="alert alert-danger">
+                                {{ formErrors.Insurance }}
+                            </div>
+                        </div>
+
+                        <label for="InsurDate" class="col-sm-2 control-label"> Expiry Date : </label>
+                        <div class="col-sm-4">
+                            <p-calendar formControlName="InsurDate" [showIcon]="true"
+                                        id="InsurDate" dateFormat="dd/M/yy">
+                            </p-calendar>
+                        </div>
+                    </div>
+
+                    <!--Row5-->
+                    <div class="form-group form-group-sm">
+                        <label for="TrailerDesc" class="col-sm-2 control-label"> Trailer Description : </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" placeholder="Trailer Description"
+                                   id="TrailerDesc" formControlName="TrailerDesc">
+                            <div *ngIf="formErrors.TrailerDesc" class="alert alert-danger">
+                                {{ formErrors.TrailerDesc }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row6-->
+                    <div class="form-group form-group-sm">
+                        <label for="Remark" class="col-sm-2 control-label"> Remark : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Remark"
+                                   id="Remark" formControlName="Remark">
+                            <div *ngIf="formErrors.Remark" class="alert alert-danger">
+                                {{ formErrors.Remark }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row6.2-->
+                    <div *ngIf="CanChangeCompany" class="form-group form-group-sm">
+                        <label for="CompanyID" class="col-sm-2 control-label"> Branch : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="companys" filter="filter" [style]="{'width':'100%'}"
+                                        id="CompanyID" formControlName="CompanyID"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                    <!--Row7-->
+                    <div class="form-group form-group-sm">
+                        <label for="ImageFile" class="col-sm-2 control-label"> Image : </label>
+                        <div class="col-sm-4">
+                            <input type="file" accept="image/*" class="form-control"
+                                   id="ImageFile" #ImageFile
+                                   (change)="onFileUploadChange($event)">
+                        </div>
+                        <div class="col-sm-6">
+                            <img [src]="trailerForm.controls.ImagesString.value" class="size-img" />
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="10">
+                <div>
+                    <p>wait for information</p>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<div *ngIf="!trailer">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of trailer.
+</div>

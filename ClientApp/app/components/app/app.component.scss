@@ -1,0 +1,106 @@
+﻿@import '~@angular/material/theming';
+
+// NOTE: Theming is currently experimental and not yet publically released!
+
+@include mat-core();
+
+$primary: mat-palette($mat-cyan);
+$accent: mat-palette($mat-blue, 700, 500, 200);
+
+// The warn palette is optional (defaults to red).
+$warn: mat-palette($mat-red);
+
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+.m2app-dark {
+    $dark-primary: mat-palette($mat-pink, 700, 500, 900);
+    $dark-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+    $dark-warn: mat-palette($mat-deep-orange);
+
+    $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+    @include angular-material-theme($dark-theme);
+}
+
+body {
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    // Helps fonts on OSX looks more consistent with other systems
+    // Isn't currently in button styles due to performance concerns
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    md-sidenav {
+        min-width: 15%;
+
+        [md-button] {
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            margin: 24px 0;
+        }
+    }
+
+    md-toolbar {
+        md-icon {
+            cursor: pointer;
+        }
+
+        .demo-toolbar {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+    .body-content {
+        padding-top: 50px;
+    }
+}
+
+.content {
+    padding-top: 50px;
+    display: -webkit-flex;
+    display: flex;
+}
+
+
+/*Start customer scrollbar*/
+
+::-webkit-scrollbar {
+    width: 14px;
+    height: 18px;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 6px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    -webkit-border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+/*End customer scrollbar*/

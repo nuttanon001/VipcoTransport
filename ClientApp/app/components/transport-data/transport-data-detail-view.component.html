@@ -1,0 +1,238 @@
+﻿<md-tab-group>
+    <md-tab label="Transportation">
+        <div *ngIf="transportData" class="detail-content">
+            <split direction="vertical">
+                <split-area [size]="95">
+                    <div class="col-sm-12 detail-view small">
+                        <div class="col-sm-12 header-detail-view">
+                            <h4>Transport Data for Car</h4>
+                        </div>
+                        <!--Row 0-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                BranchName :
+                            </div>
+                            <div class="col-sm-4 branch-box">
+                                {{transportData.BranchName|| "-"}}
+                            </div>
+                        </div>
+                        <!--Row 1-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                TransportNo :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.TransportNo || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Remark :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.Remark || "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 2-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Vehicle Type :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.VehicleType || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Car Info :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.CarInfo || "-"}}
+                            </div>
+                        </div>
+                        <!--Row 3-->
+                        <div class="col-sm-12 top-buffer">
+                            <!--<div class="col-sm-2 display-label">
+                            EmployeeRequest :
+                        </div>
+                        <div class="col-sm-4 value-box">
+                            {{transportData.EmployeeRequestString || "-"}}
+                        </div>-->
+                            <div class="col-sm-2 display-label">
+                                Transport Type :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.TransportTypeString || "-"}}
+                            </div>
+                            <div class="col-sm-2 display-label">
+                                EmployeeeDriver :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.EmployeeeDriverString || "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 4-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Transport Date :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{(transportData.TransDate | date:'dd/MM/yyyy') || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Transport Time :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.TransTime || "-"}}
+                            </div>
+                        </div>
+                        <!--Row 5-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Return Date :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{(transportData.FinalDate | date:'dd/MM/yyyy') || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Return Time :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.FinalTime || "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 6-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                From :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.SoureString || "-"}}
+                            </div>
+                            <div class="col-sm-2 display-label">
+                                To :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.DestinationString || "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 7-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Information :
+                            </div>
+                            <div class="col-sm-10 value-box">
+                                {{transportData.TransportInformation|| "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 8.2-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Job-Information :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.JobInfo|| "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 8-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Width :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.Width || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Length :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.Length || "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 9-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                WeightLoad :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.WeightLoad || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Passenger :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportData.Passenger || "-"}}
+                            </div>
+                        </div>
+                        <!--space buttom-->
+                        <div class="col-sm-12 top-buffer">
+                        </div>
+                    </div>
+                </split-area>
+                <split-area [size]="5">
+                </split-area>
+            </split>
+        </div>
+        <div *ngIf="!transportData">
+            <md-progress-bar mode="indeterminate" style="margin-top:50px;"></md-progress-bar>
+            View information of transport-data.
+        </div>
+    </md-tab>
+    <md-tab label="Requested By" *ngIf="showTransportRequest">
+        <div>
+            <div class="col-sm-12 header-detail-view">
+                <h4>Requested By</h4>
+            </div>
+            <table class="table table-hover table-sm small">
+                <colgroup>
+                    <col span="1" style="width: 5%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>No</th>
+                        <th>DateRequest</th>
+                        <th>DateRequired</th>
+                        <th>Employee</th>
+                        <th>VehicleRequired</th>
+                        <th>To</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of transportReqs; let i = index">
+                        <td>
+                            {{i + 1}}
+                        </td>
+                        <td>
+                            {{item.TransportReqNo}}
+                        </td>
+                        <td>
+                            {{(item.TransportReqDate| date:'dd/MM/yy') || "-"}}
+                        </td>
+                        <td>
+                            {{(item.TransportDate| date:'dd/MM/yy : HH.mm') || "-"}}
+                        </td>
+                        <td>
+                            {{item.EmployeeRequestString || "-"}}
+                        </td>
+                        <td>
+                            {{item.VehicleType || "-"}}
+                        </td>
+                        <td>
+                            {{item.DestinationString || "-"}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </md-tab>
+</md-tab-group>

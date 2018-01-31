@@ -1,0 +1,76 @@
+﻿<div class="example-container">
+    <split direction="horizontal" [gutterSize]="7" [visibleTransition]="true">
+        <split-area [size]="35" [visible]="hideleft" [order]="1">
+            <div class="left-col">
+                <div class="example-header">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <md-input-container floatPlaceholder="never">
+                        <input type="text" mdInput placeholder="Filter branch ..." #filter>
+                    </md-input-container>
+                </div>
+                <div class="shadowbox">
+                    <p-dataTable [value]="values" selectionMode="single" resizableColumns="true"
+                                 [(selection)]="displayValue" (onRowSelect)="onDetailView()"
+                                 scrollable="true" [scrollHeight]="scrollHeight"
+                                 [rows]="100" virtualScroll="virtualScroll"
+                                 [lazy]="true" (onLazyLoad)="onLoadData($event)" [totalRecords]="totalRow"
+                                 [rowTrackBy]="rowTrackBy">
+                        <p-header>There are {{totalRow}} branch(s)</p-header>
+                        <p-column *ngFor="let column of columns" [field]="column.field" [header]="column.header"
+                                  [style]="column.style" [sortable]="true"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="65" [order]="2">
+            <div class="media">
+                <!--Left-->
+                <div class="media-left">
+                    <div class="hide-table" (click)="hideleft = !hideleft" mdTooltip="Hide/Show Table" mdTooltipPosition="right">
+                    </div>
+                </div>
+                <!--Center-->
+                <div class="media-body">
+                    <div *ngIf="displayValue || ShowEdit; else elseBlock">
+                        <div *ngIf="!ShowEdit; else detailEdit">
+                            <company-view></company-view>
+                        </div>
+                        <ng-template #detailEdit>
+                            <company-edit></company-edit>
+                        </ng-template>
+                    </div>
+                    <ng-template #elseBlock>
+                        <h4>
+                            Selected branch data from list to show information
+                        </h4>
+                    </ng-template>
+                </div>
+                <!--Right-->
+                <div class="media-right">
+                    <div class="menu-tool">
+                        <button type="button" md-mini-fab color="accent" (click)="onDetailEdit()" [disabled]="ShowEdit" mdTooltip="Create new" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="accent" (click)="onDetailEdit(displayValue)" [disabled]="ShowEdit || DisplayDataNull" mdTooltip="Edit" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <hr />
+                        <button type="button" md-mini-fab color="warn" (click)="onCancelEdit()" [disabled]="!ShowEdit" mdTooltip="Cancel" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-minus" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="primary" (click)="onSubmit()" [disabled]="!canSave" mdTooltip="Save" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-floppy-o" aria-hidden="true"></i>
+                        </button>
+                        <hr />
+                        <button type="button" md-mini-fab color="accent" disabled mdTooltip="Report" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-file-o" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="accent" disabled mdTooltip="Report(2)" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-share" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </split-area>
+    </split>
+</div>

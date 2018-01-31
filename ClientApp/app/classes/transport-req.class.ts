@@ -1,0 +1,63 @@
+﻿export interface ITransportReq {
+    TransportRequestId: number;
+    CarTypeId: number;
+    EmployeeRequestCode: string;
+    DepartmentCode: string;
+    TransportType: string;
+    TransportTypeId: number;
+    TransportStatus: number;
+    TransportReqNo: string;
+    EmailResponse: string;
+    TransportReqDate?: Date;
+    TransportDate?: Date;
+    StringTransportDate: string;
+    TransportTime: string;
+    ContactSource: number;
+    ContactDestination: number;
+    ProblemName: string;
+    ProblemPhone: string;
+    TransportInformation: string;
+    Passenger: number;
+    WeightLoad: number;
+    Width: number;
+    Length: number;
+    Cost: number;
+    TypeOfVehcile: number;
+    JobInfo: string;
+    Creator: string;
+    Modifyer: string;
+    CompanyID: number;
+    BranchName: string;
+}
+
+export class TransportReq implements ITransportReq {
+    TransportRequestId: number;
+    CarTypeId: number;
+    EmployeeRequestCode: string;
+    DepartmentCode: string;
+    TransportType: string;
+    TransportTypeId: number;
+    TransportStatus: number;
+    TransportReqNo: string;
+    EmailResponse: string;
+    TransportReqDate?: Date;
+    TransportDate?: Date;
+    StringTransportDate: string;
+    TransportTime: string;
+    ContactSource: number;
+    ContactDestination: number;
+    ProblemName: string;
+    ProblemPhone: string;
+    TransportInformation: string;
+    Passenger: number;
+    WeightLoad: number;
+    Width: number;
+    Length: number;
+    Cost: number;
+    TypeOfVehcile: number;
+    JobInfo: string;
+    Creator: string;
+    Modifyer: string;
+    CompanyID: number;
+    BranchName: string;
+}

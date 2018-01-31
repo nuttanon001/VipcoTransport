@@ -1,0 +1,46 @@
+﻿<div class="detail">
+    <div class="well well-sm">
+        <h4>Transport information filter by range of date</h4>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <p-calendar class="col-sm-6" [(ngModel)]="scheduleWeekly.StartDate" [showIcon]="true" dateFormat="dd/mm/yy"
+                        (onSelect)="onStartDateChange()">
+            </p-calendar>
+            <p-calendar class="col-sm-6" [(ngModel)]="scheduleWeekly.EndDate" [showIcon]="true" dateFormat="dd/mm/yy"
+                        (onSelect)="onEndDateChange()">
+            </p-calendar>
+        </div>
+        <div class="col-sm-6">
+            Branch :
+            <md-radio-group [(ngModel)]="company" (change)="onChangeRadio(company)">
+                <md-radio-button *ngFor="let select of companys" [value]="select" style="margin:0 5px 0 5px;">
+                    {{select.CompanyName}}
+                </md-radio-button>
+            </md-radio-group>
+        </div>
+        <div class="col-sm-12">
+            Reload data in {{message}} sec.
+            <div class="box2" style="width:100%;">
+                <md-progress-bar color="primary" [value]="count" mode="determinate">
+                </md-progress-bar>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dataTable [value]="schedules"
+             [scrollHeight]="scrollHeight" scrollWidth="98.5vw" scrollable="true">
+    <p-column *ngFor="let column of columnNames" [field]="column.field"
+              [styleClass]="column.styleclass"
+              [header]="column.header" [style]="column.style" [sortable]="true">
+        <ng-template *ngIf="column.isButton" let-col let-data1="rowData" pTemplate="body">
+            <div *ngIf="data1[col.field]">
+                <schedule-chart-bar [stringData]="data1[col.field]"></schedule-chart-bar>
+            </div>
+            <div *ngIf="!data1[col.field]" style="color:red">
+                Data not found.
+            </div>
+        </ng-template>
+    </p-column>
+</p-dataTable>

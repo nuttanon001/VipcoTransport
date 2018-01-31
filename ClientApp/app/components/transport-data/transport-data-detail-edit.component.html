@@ -1,0 +1,252 @@
+﻿<div *ngIf="transportData">
+    <form [formGroup]="transportDataForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="95">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Transport data information</h4>
+                    </div>
+
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="TransportNo" class="col-sm-2 control-label"> Transport No : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="auto generated code no"
+                                   id="TransportNo" formControlName="TransportNo"
+                                   readonly>
+                            <div *ngIf="formErrors.TransportNo" class="alert alert-danger">
+                                {{ formErrors.TransportNo }}
+                            </div>
+                        </div>
+
+                        <label for="Remark" class="col-sm-2 control-label"> Remark : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Remark"
+                                   id="Remark" formControlName="Remark">
+                            <div *ngIf="formErrors.Remark" class="alert alert-danger">
+                                {{ formErrors.Remark }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm">
+                        <label for="CarTypeId" class="col-sm-2 control-label"> Car Type : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="carTypes" filter="filter" [style]="{'width':'100%'}"
+                                        id="CarTypeId" formControlName="CarTypeId"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                        </div>
+
+                        <label for="CarId" class="col-sm-2 control-label"> Car : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="cars" filter="filter" [style]="{'width':'100%'}"
+                                        id="CarId" formControlName="CarId"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                            <div *ngIf="formErrors.CarId" class="alert alert-danger">
+                                {{ formErrors.CarId }}
+                            </div>
+                        </div>
+
+                        <!--<label for="TrailerId" class="col-sm-2 control-label" hidden> Trailer Truck : </label>
+                        <div class="col-sm-4" hidden>
+                            <p-dropdown [options]="trailers" filter="filter" [style]="{'width':'100%'}"
+                                        id="TrailerId" formControlName="TrailerId"
+                                        class="form-control no-border" >
+                            </p-dropdown>
+                        </div>-->
+                    </div>
+
+                    <!--Row3-->
+                    <div class="form-group form-group-sm">
+                        <label for="EmployeeDrive" class="col-sm-2 control-label"> Employee Drive : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="drivers" filter="filter" [style]="{'width':'100%'}"
+                                        id="EmployeeDrive" formControlName="EmployeeDrive"
+                                        class="form-control no-border" >
+                            </p-dropdown>
+                        </div>
+
+                        <label for="TransportTypeId" class="col-sm-2 control-label"> Transport Type : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="transportTypes" filter="filter" [style]="{'width':'100%'}"
+                                        id="TransportTypeId" formControlName="TransportTypeId"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                            <div *ngIf="formErrors.TransportTypeId" class="alert alert-danger">
+                                {{ formErrors.TransportTypeId }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row 4-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="TransDate" class="col-sm-2 control-label"> Transport Date : </label>
+                        <div class="col-sm-4">
+                            <p-calendar formControlName="TransDate" [showIcon]="true"
+                                        id="TransDate" dateFormat="dd/mm/yy" placeholder="  Transport Date">
+                            </p-calendar>
+                            <span class="is-request-date">**</span>
+                            <!--<p-calendar [showIcon]="true" dataType="string"
+                                        formControlName="TransDateString" id="TransDateString"
+                                        dateFormat="dd/mm/yy" placeholder="Transport Date">
+                            </p-calendar>-->
+                        </div>
+
+                        <label for="TransTime" class="col-sm-2 control-label"> Transport Time : </label>
+                        <div class="col-sm-4">
+                            <p-inputMask mask="99:99"  placeholder="  HH:mm" [style]="{'width':'100%'}"
+                                         formControlName="TransTime" id="TransTime"
+                                         class="form-control no-border" required>
+                            </p-inputMask>
+                        </div>
+                    </div>
+
+                    <!--Row 4.2-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="FinalDate" class="col-sm-2 control-label"> Return Date : </label>
+                        <div class="col-sm-4">
+                            <p-calendar formControlName="FinalDate" [showIcon]="true" [readonlyInput]="true"
+                                        id="FinalDate" dateFormat="dd/mm/yy" placeholder="  Return Date"
+                                        [minDate]="transportDataForm.controls.TransDate.value" yearRange="2000:2030">
+                            </p-calendar>
+                            <span class="is-request-date">**</span>
+                        </div>
+
+                        <label for="FinalTime" class="col-sm-2 control-label"> Return Time : </label>
+                        <div class="col-sm-4">
+                            <p-inputMask mask="99:99" placeholder="  HH:mm" [style]="{'width':'100%'}"
+                                         formControlName="FinalTime" id="FinalTime"
+                                         class="form-control no-border" required>
+                            </p-inputMask>
+                        </div>
+                    </div>
+
+                    <!--Row 5-->
+                    <div class="form-group form-group-sm">
+                        <label for="ContactSource" class="col-sm-2 control-label"> From : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="contactSources" filter="filter" [style]="{'width':'100%'}"
+                                        id="ContactSource" formControlName="ContactSource"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                            <div *ngIf="formErrors.ContactSource" class="alert alert-danger">
+                                {{ formErrors.ContactSource }}
+                            </div>
+                        </div>
+
+                        <label for="ContactDestination" class="col-sm-2 control-label"> To : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="contactDestinations" filter="filter" [style]="{'width':'100%'}"
+                                        id="ContactDestination" formControlName="ContactDestination"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                            <div *ngIf="formErrors.ContactDestination" class="alert alert-danger">
+                                {{ formErrors.ContactDestination }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row 6-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="TransportInformation" class="col-sm-2 control-label"> TransportInformation : </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" placeholder="TransportInformation"
+                                   id="TransportInformation" formControlName="TransportInformation"
+                                   required>
+                            <div *ngIf="formErrors.TransportInformation" class="alert alert-danger">
+                                {{ formErrors.TransportInformation }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row 7.2-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="JobInfo" class="col-sm-2 control-label"> Job Info : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Job Info"
+                                   id="JobInfo" formControlName="JobInfo">
+                        </div>
+                    </div>
+
+                    <!--Row 7-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="WeightLoad" class="col-sm-2 control-label"> Load Weight(ton.) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="0" placeholder="Load Weight"
+                                   id="WeightLoad" formControlName="WeightLoad">
+                        </div>
+
+                        <label for="Passenger" class="col-sm-2 control-label"> Passenger : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="0" placeholder="Passenger"
+                                   id="Passenger" formControlName="Passenger">
+                        </div>
+                    </div>
+
+                    <!--Row 8-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="Width" class="col-sm-2 control-label"> Load Width(m.) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="0" placeholder="Load Width"
+                                   id="Width" formControlName="Width">
+                        </div>
+
+                        <label for="Length" class="col-sm-2 control-label"> Load Length(m.) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="0" placeholder="Load Length"
+                                   id="Length" formControlName="Length">
+                        </div>
+                    </div>
+
+                    <!--Row8.2-->
+                    <div class="form-group form-group-sm top-buffer" *ngIf="CanChangeCompany">
+                        <label for="CompanyID" class="col-sm-2 control-label"> Branch : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="companys" filter="filter" [style]="{'width':'100%'}"
+                                        id="CompanyID" formControlName="CompanyID"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <!--Row 9-->
+                    <div class="form-group form-group-sm top-buffer" [hidden]="transportDataForm.controls.Creator.value !== null">
+                        <label for="RoutineTransport" class="col-sm-2 control-label"> Routine Transport : </label>
+                        <div class="col-sm-4">
+                            <md-checkbox color="primary"
+                                         id="RoutineTransport" formControlName="RoutineTransport">Routine</md-checkbox>
+                        </div>
+                    </div>
+
+                    <!--Row 10-->
+                    <div class="form-group form-group-sm top-buffer" [hidden]="!transportDataForm.controls.RoutineTransport.value">
+                        <label for="RoutineDay" class="col-sm-2 control-label"> Day Repeat(s) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" placeholder="How many day to repeat transport?"
+                                   id="RoutineDay" formControlName="RoutineDay">
+                        </div>
+
+                        <label for="RoutineCount" class="col-sm-2 control-label"> Time Loop : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" placeholder="How many loop?"
+                                   id="RoutineCount" formControlName="RoutineCount">
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="5">
+                <div>
+                    <p>wait for information</p>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<div *ngIf="!transportData">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of transport-data
+</div>

@@ -1,0 +1,273 @@
+﻿<div *ngIf="transportReq;else NotFoundBlock">
+    <form [formGroup]="transportReqForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="topPanel">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Transport Request information</h4>
+                    </div>
+
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="TransportReqNo" class="col-sm-2 control-label"> Transport Requestion : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="auto generated code no"
+                                   id="TransportReqNo" formControlName="TransportReqNo"
+                                   readonly> <!--[readonly]="transportReqForm.controls.Creator.value !== null"-->
+                            <!--<div *ngIf="formErrors.TransportReqNo" class="alert alert-danger">
+                                {{ formErrors.TransportReqNo }}
+                            </div>-->
+                        </div>
+
+                        <label for="EmailResponse" class="col-sm-2 control-label"> Email (add ";" between email): </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="email" placeholder="Email for notify"
+                                   id="EmailResponse" formControlName="EmailResponse"
+                                   mdTooltip="add ; for multiple email address">
+                            <!--<div *ngIf="formErrors.EmailResponse" class="alert alert-danger">
+                                {{ formErrors.EmailResponse }}
+                            </div>-->
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm">
+
+                        <label for="EmployeeRequestCode" class="col-sm-2 control-label"> Employee Request : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="employees" filter="filter" [style]="{'width':'100%'}"
+                                        id="EmployeeRequestCode" formControlName="EmployeeRequestCode"
+                                        class="form-control no-border"
+                                        required>
+                            </p-dropdown>
+                            <!--<div *ngIf="formErrors.EmployeeRequestCode" class="alert alert-danger">
+                                {{ formErrors.EmployeeRequestCode }}
+                            </div>-->
+                        </div>
+
+                        <label for="DepartmentCode" class="col-sm-2 control-label">Department : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Department"
+                                   id="DepartmentCode" formControlName="DepartmentCode"
+                                   required>
+                            <!--<div *ngIf="formErrors.DepartmentCode" class="alert alert-danger">
+                                {{ formErrors.DepartmentCode }}
+                            </div>-->
+                        </div>
+                    </div>
+
+                    <!--Row3-->
+                    <div class="form-group form-group-sm">
+                        <label for="CarTypeId" class="col-sm-2 control-label"> Vehclie Type : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="carTypes" filter="filter" [style]="{'width':'100%'}"
+                                        id="CarTypeId" formControlName="CarTypeId"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                            <!--<div *ngIf="formErrors.CarTypeId" class="alert alert-danger">
+                                {{ formErrors.CarTypeId }}
+                            </div>-->
+                        </div>
+
+                        <label for="TransportTypeId" class="col-sm-2 control-label"> Transport Type : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="transportTypes" filter="filter" [style]="{'width':'100%'}"
+                                        id="TransportTypeId" formControlName="TransportTypeId"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <!--Row4-->
+                    <div class="form-group form-group-sm">
+                        <label for="TransportDate" class="col-sm-2 control-label"> Transport Date : </label>
+                        <div class="col-sm-4">
+                            <p-calendar formControlName="TransportDate" [showIcon]="true" required
+                                        [minDate]="toDay"
+                                        id="TransportDate" dateFormat="dd/mm/yy" placeholder="  Transport Date">
+                            </p-calendar>
+                            <span class="is-request-date">**</span>
+                        </div>
+
+                        <label for="TransportTime" class="col-sm-2 control-label"> Transport Time : </label>
+                        <div class="col-sm-4">
+                            <p-inputMask mask="99:99" placeholder="  HH:mm" [style]="{'width':'100%'}"
+                                         formControlName="TransportTime" id="TransportTime"
+                                         class="form-control no-border" required>
+                            </p-inputMask>
+                        </div>
+                    </div>
+
+                    <!--Row5-->
+                    <div class="form-group form-group-sm">
+                        <label for="ContactSource" class="col-sm-2 control-label label-click" (click)="onClickAddLocation()"> From (Add Click) : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="contactSources" filter="filter" [style]="{'width':'100%'}"
+                                        id="ContactSource" formControlName="ContactSource"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                        </div>
+
+                        <label for="ContactDestination" class="col-sm-2 control-label label-click" (click)="onClickAddLocation()"> To (Add Click) : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="contactDestinations" filter="filter" [style]="{'width':'100%'}"
+                                        id="ContactDestination" formControlName="ContactDestination"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <!--Row6-->
+                    <div class="form-group form-group-sm">
+                        <label for="ProblemName" class="col-sm-2 control-label"> Contact Name: </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Contact Name"
+                                   id="ProblemName" formControlName="ProblemName"
+                                   required>
+                            <!--<div *ngIf="formErrors.ProblemName" class="alert alert-danger">
+                                {{ formErrors.ProblemName }}
+                            </div>-->
+                        </div>
+
+                        <label for="ProblemPhone" class="col-sm-2 control-label"> Contact Phone : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Contact Phone"
+                                   id="ProblemPhone" formControlName="ProblemPhone"
+                                   required>
+                            <!--<div *ngIf="formErrors.ProblemPhone" class="alert alert-danger">
+                                {{ formErrors.ProblemPhone }}
+                            </div>-->
+                        </div>
+                    </div>
+
+                    <!--Row7-->
+                    <div class="form-group form-group-sm">
+                        <label for="TransportInformation" class="col-sm-2 control-label"> TransportInformation : </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" placeholder="TransportInformation"
+                                   id="TransportInformation" formControlName="TransportInformation"
+                                   required>
+                            <!--<div *ngIf="formErrors.TransportInformation" class="alert alert-danger">
+                                {{ formErrors.TransportInformation }}
+                            </div>-->
+                        </div>
+                    </div>
+                    <!--Row8.1-->
+                    <div class="form-group form-group-sm">
+                        <label for="JobInfo" class="col-sm-2 control-label"> Job Info : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Job Info"
+                                   id="JobInfo" formControlName="JobInfo">
+                        </div>
+                    </div>
+                    <!--Row8.2-->
+                    <div class="form-group form-group-sm">
+                        <label for="WeightLoad" class="col-sm-2 control-label"> Load Weight(ton.) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="1" placeholder="Load Weight"
+                                   id="WeightLoad" formControlName="WeightLoad" required>
+                        </div>
+
+                        <label for="Passenger" class="col-sm-2 control-label"> Passenger : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="0" placeholder="Passenger"
+                                   id="Passenger" formControlName="Passenger" required>
+                        </div>
+                    </div>
+
+                    <!--Row9-->
+                    <div class="form-group form-group-sm">
+                        <label for="Width" class="col-sm-2 control-label"> Load Width(m.) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="0" placeholder="Load Width"
+                                   id="Width" formControlName="Width" required>
+                        </div>
+
+                        <label for="Length" class="col-sm-2 control-label"> Load Length(m.) : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="0" placeholder="Load Length"
+                                   id="Length" formControlName="Length" required>
+                        </div>
+                    </div>
+
+                    <!--Row10-->
+                    <div class="form-group form-group-sm">
+                        <label for="attachFile" class="col-sm-2 control-label"> Attact Files : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="file"
+                                   id="attachFile" #attachFile name="attachFile" multiple
+                                   (change)="fileInputChange($event)" />
+                        </div>
+
+                        <label for="Cost" class="col-sm-2 control-label"> Cost : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="number" min="0" placeholder="Cost"
+                                   id="Cost" formControlName="Cost">
+                        </div>
+                    </div>
+
+                    <!--Row11-->
+                    <div class="form-group form-group-sm">
+                        <label class="col-sm-2 control-label"> List of File(s) : </label>
+                        <div class="col-sm-4">
+                            <ul *ngFor="let file of files" style="padding-left:0px;margin-left:0px;">
+                                <li class="form-control">{{file}}</li>
+                            </ul>
+                        </div>
+                        <!--Row11.2-->
+                        <div *ngIf="CanChangeCompany">
+                            <label for="CompanyID" class="col-sm-2 control-label"> Branch : </label>
+                            <div class="col-sm-4">
+                                <p-dropdown [options]="companys" filter="filter" [style]="{'width':'100%'}"
+                                            id="CompanyID" formControlName="CompanyID"
+                                            class="form-control no-border">
+                                </p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="buttomPanel">
+                <div *ngIf="attachFiles.length > 0">
+                    <table class="table table-hover table-sm small">
+                        <colgroup>
+                            <col span="1" style="width: 80%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                                <th>Command</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let file of attachFiles">
+                                <td>
+                                    {{file.AttachFileName}}
+                                </td>
+                                <td>
+                                    <div>
+                                        <a class="btn btn-sm btn-default" mdTooltip="Open Attach File" (click)="onOpenNewLink(file.AttachAddress)">
+                                            <em class="fa fa-file"></em>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger" mdTooltip="Remove Attach File" (click)="onDeleteAttachFile(file)">
+                                            <em class="fa fa-remove"></em>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<ng-template #NotFoundBlock>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of car-data.
+</ng-template>
+<p-dialog [(visible)]="display" modal="modal" responsive="true" dismissableMask="true"
+          header="New location for system" width="750" height="450">
+    <location-detail-no-contact-edit></location-detail-no-contact-edit>
+</p-dialog>

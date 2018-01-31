@@ -1,0 +1,68 @@
+﻿<div *ngIf="user; else NotFoundBlock" class="detail-content">
+    <split direction="vertical">
+        <split-area [size]="95">
+            <div class="col-sm-12 detail-view">
+                <div class="col-sm-12 header-detail-view">
+                    <h4>Information user of transportation</h4>
+                </div>
+                <!--Row 1-->
+                <div class="col-sm-12">
+                    <div class="col-sm-2 display-label">
+                        Employee Code :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{user.EmployeeCode || "-"}} {{user.FirstName || "-"}} {{user.LastName || "-"}}
+                    </div>
+
+                    <div class="col-sm-2 display-label">
+                        Branch of user :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{company?.CompanyName || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 2-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Username :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{user.Username || "-"}}
+                    </div>
+
+                    <div class="col-sm-2 display-label">
+                        Role :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{RoleString}}
+                    </div>
+                </div>
+
+                <!--Row 3-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        MailAddress :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{user.MailAddress || "-"}}
+                    </div>
+                </div>
+                <!--space buttom-->
+                <div class="col-sm-12 top-buffer">
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="5">
+            <div>
+                <p>
+                    wait for information
+                </p>
+            </div>
+        </split-area>
+    </split>
+</div>
+<ng-template #NotFoundBlock>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    View information of user.
+</ng-template>

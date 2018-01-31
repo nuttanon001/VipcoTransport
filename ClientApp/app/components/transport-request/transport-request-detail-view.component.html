@@ -1,0 +1,273 @@
+﻿<md-tab-group>
+    <md-tab label="Transport Requestion">
+        <div *ngIf="transportReq" class="detail-content">
+            <split direction="vertical">
+                <split-area [size]="topPanel">
+                    <div class="col-sm-12 detail-view small">
+                        <div class="col-sm-12 header-detail-view">
+                            <h4>Transport Requestion</h4>
+                        </div>
+
+                        <!--Row 0-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                BranchName :
+                            </div>
+                            <div class="col-sm-4 branch-box">
+                                {{transportReq.BranchName|| "-"}}
+                            </div>
+                        </div>
+                        <!--Row 1-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Requestion No :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.TransportReqNo|| "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Notification Email:
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.EmailResponse || "-"}}
+                            </div>
+                            <!--<div class="col-sm-2 display-label">
+                            Requestion Date :
+                        </div>
+                        <div class="col-sm-4 value-box">
+                            {{(transportReq.TransportReqDate| date:'dd/MM/yyyy') || "-"}}
+                        </div>-->
+                        </div>
+
+                        <!--Row 2-->
+                        <!--Row 3-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                EmployeeRequest :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.EmployeeRequestString || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Department :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.DepartmentCode || "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 4-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Vehclie Type :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.VehicleType || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Transport Type :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.TransportType || "-"}}
+                            </div>
+                        </div>
+                        <!--Row 5.1-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Required Date :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{(transportReq.TransportReqDate | date:'dd/MM/yyyy') || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Required Time :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.RequestTime || "-"}}
+                            </div>
+                        </div>
+                        <!--Row 5.2-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Transport Date :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{(transportReq.TransportDate| date:'dd/MM/yyyy') || "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Transport Time :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.TransportTime|| "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 6-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                From:
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.SoureString || "-"}}
+                            </div>
+                            <div class="col-sm-2 display-label">
+                                To :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.DestinationString || "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 7-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Contact Name :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.ProblemName|| "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Contact Phone :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.ProblemPhone|| "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 8-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Information :
+                            </div>
+                            <div class="col-sm-10 value-box">
+                                {{transportReq.TransportInformation|| "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 8.2-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Job-Information :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.JobInfo|| "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 9-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                WeightLoad :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.WeightLoad|| "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Passenger :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.Passenger|| "-"}}
+                            </div>
+
+                        </div>
+
+                        <!--Row 10-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Width :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.Width|| "-"}}
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Length :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.Length|| "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 11-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                TransportStatus :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                <span [ngStyle]="getStyles(transportReq.TransportStatus)">{{transportReq.StringStaus || "-"}}</span>
+                            </div>
+
+                            <div class="col-sm-2 display-label">
+                                Cost :
+                            </div>
+                            <div class="col-sm-4 value-box">
+                                {{transportReq.Cost|| "-"}}
+                            </div>
+                        </div>
+
+                        <!--Row 12-->
+                        <div class="col-sm-12 top-buffer">
+                            <div class="col-sm-2 display-label">
+                                Status Color :
+                            </div>
+                            <div class="col-sm-10 value-box">
+                                <span style="color:red;"> Red : "Cancelleds" </span> ||
+                                <span style="color:goldenrod;"> Yellow : "Waitings" </span> ||
+                                <span style="color:blue;"> Blue : "Change Date-Time" </span> ||
+                                <span style="color:forestgreen;"> Green : "Completeds" </span>
+                            </div>
+                        </div>
+                        <!--space buttom-->
+                    </div>
+                </split-area>
+                <split-area [size]="buttomPanel">
+                    <div *ngIf="attachFiles.length > 0">
+                        <table class="table table-hover table-sm small">
+                            <colgroup>
+                                <col span="1" style="width: 80%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Open</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let file of attachFiles">
+                                    <td>
+                                        {{file.AttachFileName}}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-default" (click)="onOpenNewLink(file.AttachAddress)">
+                                            <em class="fa fa-file"></em>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </split-area>
+            </split>
+        </div>
+        <div *ngIf="!transportReq">
+            <md-progress-bar mode="indeterminate" style="margin-top:50px;"></md-progress-bar>
+            View information of transport-req.
+        </div>
+    </md-tab>
+    <md-tab label="Transportation" *ngIf="transportData">
+        <div *ngIf="typeTransport; else elseBlock2">
+            <transport-data-detail-view></transport-data-detail-view>
+        </div>
+        <ng-template #elseBlock2>
+            <transport-data-truck-detail-view></transport-data-truck-detail-view>
+        </ng-template>
+    </md-tab>
+</md-tab-group>
+

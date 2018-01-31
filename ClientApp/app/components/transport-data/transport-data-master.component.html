@@ -1,0 +1,83 @@
+﻿<div class="master-content">
+    <split direction="horizontal" [gutterSize]="7" [visibleTransition]="true">
+        <split-area [size]="40" [visible]="hideleft" [order]="1">
+            <div class="left-col">
+                <div>
+                    <form [formGroup]="transportDataForm" style="width:100%;">
+                        <div>
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <md-input-container>
+                                <input formControlName="search" mdInput placeholder="Search here ..." #gb>
+                            </md-input-container>
+                        </div>
+                    </form>
+                </div>
+                <div class="shadowbox small">
+                    <!--scrollable="true" [scrollHeight]="scrollHeight"-->
+                    <p-dataTable [value]="transportDatas" selectionMode="single" resizableColumns="true"
+                                 [(selection)]="transportData" (onRowSelect)="onDetailView()"
+                                 scrollable="true" [scrollHeight]="scrollHeight"
+                                 [globalFilter]="gb" [rows]="100" virtualScroll="virtualScroll" [lazy]="true" (onLazyLoad)="loadData($event,table)" [totalRecords]="totalRow">
+                        <p-header>There are {{totalRow}} transport(s)</p-header>
+                        <p-column field="RowNumber" header="no." [style]="{'width':'5%'}"></p-column>
+                        <p-column field="TransportNo" header="Paper No." [sortable]="true"></p-column>
+                        <p-column field="DestinationString" header="To" [sortable]="true"></p-column>
+                        <p-column field="TransportDateTime" header="Date" [sortable]="true"></p-column>
+                        <p-column field="CarNo" header="Car" [sortable]="true"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="60" [order]="2">
+            <div class="media">
+                <!--Left-->
+                <div class="media-left">
+                    <div class="hide-table" (click)="hideleft = !hideleft" mdTooltip="Hide/Show Table" mdTooltipPosition="right">
+                        <!--<button  class="btn btn-info option-button">.</button>-->
+                    </div>
+                </div>
+                <!--Center-->
+                <div class="media-body">
+                    <div *ngIf="transportData; else elseBlock">
+                        <div *ngIf="!showEdit; else detailEdit">
+                            <transport-data-detail-view></transport-data-detail-view>
+                        </div>
+                        <ng-template #detailEdit>
+                            <transport-data-detail-edit></transport-data-detail-edit>
+                        </ng-template>
+                    </div>
+                    <ng-template #elseBlock>
+                        <h4>
+                            Selected transport data from list to show information
+                        </h4>
+                    </ng-template>
+                </div>
+                <!--Right-->
+                <div class="media-right">
+                    <div class="menu-tool">
+                        <button type="button" md-mini-fab color="primary" (click)="onDetailEdit()" [disabled]="showEdit" mdTooltip="Create new" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="primary" (click)="onDetailEdit(transportData)" [disabled]="showEdit || TransportDataNull" mdTooltip="Edit" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <hr />
+                        <button type="button" md-mini-fab color="warn" (click)="onCancelEdit()" [disabled]="!showEdit" mdTooltip="Cancel" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-minus" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="accent" (click)="onSubmit()" [disabled]="!canSave" mdTooltip="Save" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-floppy-o" aria-hidden="true"></i>
+                        </button>
+                        <hr />
+                        <button type="button" md-mini-fab color="primary" (click)="reportExcel(transportData)" [disabled]="showEdit || TransportDataNull" mdTooltip="To Excel file" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-file-excel-o" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="primary" (click)="reportPdf(transportData)" [disabled]="showEdit || TransportDataNull" mdTooltip="To Pdf file" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-file-pdf-o" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </split-area>
+    </split>
+</div>

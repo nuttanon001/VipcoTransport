@@ -1,0 +1,78 @@
+﻿<div *ngIf="user;else NotFoundBlock">
+    <form [formGroup]="userForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="95">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>User information of transportation system edit</h4>
+                    </div>
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="EmployeeCode" class="col-sm-2 control-label"> Employee : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="employees" filter="filter" [style]="{'width':'100%'}"
+                                        id="EmployeeCode" formControlName="EmployeeCode"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                        </div>
+
+                        <label for="CompanyId" class="col-sm-2 control-label"> Branch : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="companys" filter="filter" [style]="{'width':'100%'}"
+                                        id="CompanyId" formControlName="CompanyId"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm">
+
+                        <label for="Username" class="col-sm-2 control-label"> Username : </label>
+                        <div class="col-sm-4">
+                            <input type="text" placeholder="Username"
+                                   id="Username" formControlName="Username"
+                                   class="form-control" required>
+                            <div *ngIf="formErrors.Username" class="alert alert-danger">
+                                {{ formErrors.Username }}
+                            </div>
+                        </div>
+
+                        <label for="Password" class="col-sm-2 control-label">Password : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Password"
+                                   id="Password" formControlName="Password">
+                        </div>
+                    </div>
+
+                    <!--Row3-->
+                    <div class="form-group form-group-sm">
+                        <label for="Role" class="col-sm-2 control-label"> Role : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="roles" filter="filter" [style]="{'width':'100%'}"
+                                        id="Role" formControlName="Role"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                        </div>
+
+                        <label for="MailAddress" class="col-sm-2 control-label"> Mail address : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="email" placeholder="Mail address"
+                                   id="MailAddress" formControlName="MailAddress">
+                            <div *ngIf="formErrors.MailAddress" class="alert alert-danger">
+                                {{ formErrors.MailAddress }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </split-area>
+            <split-area [size]="5">
+            </split-area>
+        </split>
+    </form>
+</div>
+<ng-template #NotFoundBlock>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit user information of transportation system.
+</ng-template>

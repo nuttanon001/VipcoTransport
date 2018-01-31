@@ -1,0 +1,29 @@
+﻿<div>
+    <div class="detail">
+        <h4>Transport information filter by date</h4><hr />
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box2">
+                    <p-calendar [(ngModel)]="pickDate" [showIcon]="true" dateFormat="dd/mm/yy"
+                                (onSelect)="onPickDateChange()" dataType="string">
+                    </p-calendar>
+                </div>
+                <div class="box1">
+                    Reload data in {{message}} sec
+                </div>
+                <div class="box2" style="width:100%;">
+                    <md-progress-bar color="primary" [value]="count" mode="determinate">
+                    </md-progress-bar>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shadowbox">
+        <!--scrollable="true" [scrollHeight]="scrollHeight"-->
+        <p-dataTable [value]="schedules" resizableColumns="true" selectionMode="multiple"
+                     [responsive]="true" >
+            <p-column *ngFor="let column of columnNames" [field]="column.field" [styleClass]="column.styleclass"
+                      [header]="column.header" [style]="column.style" [sortable]="true" [frozen]="column.frozen"></p-column>
+        </p-dataTable>
+    </div>
+</div>

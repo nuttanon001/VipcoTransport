@@ -1,0 +1,78 @@
+﻿
+.detail {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+hr {
+    background-color:steelblue;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.shadowbox {
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h4 {
+    color: darkcyan;
+}
+
+.pageNumber {
+    color: steelblue;
+    margin: 0 50px 0 20px;
+}
+
+:host /deep/ .time-col {
+    padding: 2px;
+    margin: 2px;
+    background-color: lightsteelblue;
+    min-width: 150px;
+}
+
+:host /deep/ .type-col {
+    padding: 2px;
+    margin: 2px;
+    color:white;
+    background-color: maroon;
+    min-width: 150px;
+}
+
+:host /deep/ .singleLine {
+    //width:150px;
+    min-width: 105px;
+    top: 0px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    position: relative !important;
+}
+
+
+.ui-datatable {
+    white-space: normal;
+    tbody {
+        white-space: normal;
+        td {
+            white-space: normal;
+        }
+    }
+}
+
+.fixed-size {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+.glyphicon.glyphicon-time {
+    font-size: 20px;
+}
+.box1 {
+    margin:5px 0px 0px 38px;
+    display: inline-block;
+    color: steelblue;
+}
+
+.box2 {
+    display: inline-block;
+}
+

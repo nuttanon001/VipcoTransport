@@ -1,0 +1,68 @@
+﻿
+.need-hight {
+    height: -webkit-calc(100vh - 220px); /* google, safari */
+    height: calc(100vh - 220px);
+}
+
+h4 {
+    color: darkcyan;
+}
+
+.is-request-date {
+    color: red;
+    margin-left: 30px;
+}
+
+.is-request {
+    color: red;
+    margin-left: 2px;
+}
+
+label {
+    text-align: right;
+}
+
+.label-click {
+    color: blue;
+    cursor: pointer;
+}
+
+.form-group-sm {
+    margin-bottom: 5px;
+}
+
+.no-border {
+    margin: -20px 0px,0px 0px; /*t,r,b,l*/
+    padding: 0;
+    float: left;
+    border: 0;
+    box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}
+
+.size-img {
+    height: auto;
+    max-width: 300px;
+}
+
+.alert-danger {
+    font-size: smaller;
+}
+
+.ng-valid[required], .ng-valid.required {
+    border-bottom: 2px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form) {
+    border-bottom: 2px solid #a94442; /* red */
+}
+
+.well {
+
+    .d1 {
+        background-color: lightgray;
+    }
+
+    .d2 {
+        background-color: lightyellow;
+    }
+}

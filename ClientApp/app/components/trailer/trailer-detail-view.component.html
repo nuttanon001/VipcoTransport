@@ -1,0 +1,118 @@
+﻿<div *ngIf="trailer" class="detail-content">
+    <split direction="vertical">
+        <split-area [size]="90">
+            <div class="col-sm-12 detail-view">
+                <div class="col-sm-12 header-detail-view">
+                    <h4>Trailer information</h4>
+                </div>
+                <!--Row 1-->
+                <div class="col-sm-12">
+                    <div class="col-sm-2 display-label">
+                        TrailerNo :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{trailer.TrailerNo || "-"}}
+                    </div>
+                    <div class="col-sm-2 display-label">
+                        Trailerype :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{carType?.CarTypeDesc || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 2-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Brand :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{carBrand?.BrandName || "-"}}
+                    </div>
+                    <div class="col-sm-2 display-label">
+                        RegisterNo. :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{trailer.RegisterNo || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 3-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Trailer Description :
+                    </div>
+                    <div class="col-sm-10 value-box">
+                        {{trailer.TrailerDesc || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 4-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        TrailerLoad :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{trailer.TrailerLoad || "-"}}
+                    </div>
+                    <div class="col-sm-2 display-label">
+                        TrailerWeight(ton.) :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{trailer.TrailerWeight || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 5-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Insurance :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{trailer.Insurance || "-"}}
+                    </div>
+                    <div class="col-sm-2 display-label">
+                        Expiry date :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{(trailer.InsurDate| date:'dd/MM/yyyy') || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 6-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Remark :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{trailer.Remark || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 7-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Image :
+                    </div>
+                    <div class="col-sm-10">
+                        <img [src]="trailer.ImagesString" class="size-img" />
+                    </div>
+                </div>
+                <!--space buttom-->
+                <div class="col-sm-12 top-buffer">
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="10">
+            <div>
+                <p>
+                    wait for information
+                </p>
+            </div>
+        </split-area>
+    </split>
+</div>
+<div *ngIf="!trailer">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    View information of car-data.
+</div>

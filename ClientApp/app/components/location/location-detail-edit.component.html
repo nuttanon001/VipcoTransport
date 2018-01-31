@@ -1,0 +1,55 @@
+﻿<div *ngIf="location">
+    <form [formGroup]="locationForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="95">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Location information</h4>
+                    </div>
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="LocationCode" class="col-sm-2 control-label"> Location Code : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Location Code" required
+                                   id="LocationCode" formControlName="LocationCode">
+                            <div *ngIf="formErrors.LocationCode" class="alert alert-danger">
+                                {{ formErrors.LocationCode }}
+                            </div>
+                        </div>
+
+                        <label for="LocationName" class="col-sm-2 control-label"> Location Name : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Location Name"
+                                   id="LocationName" formControlName="LocationName">
+                            <div *ngIf="formErrors.LocationName" class="alert alert-danger">
+                                {{ formErrors.LocationName }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm">
+                        <label for="LocationAddress" class="col-sm-2 control-label"> Location Address : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Location Address"
+                                   id="LocationAddress" formControlName="LocationAddress">
+                            <div *ngIf="formErrors.LocationAddress" class="alert alert-danger">
+                                {{ formErrors.LocationAddress }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="5">
+                <div>
+                    <p>wait for information</p>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<div *ngIf="!location">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of location.
+</div>

@@ -1,0 +1,44 @@
+﻿<div *ngIf="carBrand" class="detail-content">
+    <split direction="vertical">
+        <split-area [size]="90">
+            <div class="col-sm-12 detail-view">
+                <div class="col-sm-12 header-detail-view">
+                    <h4>Brand information</h4>
+                </div>
+                <!--Row 1-->
+                <div class="col-sm-12">
+                    <div class="col-sm-2 display-label">
+                        Brand name :
+                    </div>
+                    <div class="col-sm-8 value-box">
+                        {{carBrand.BrandName || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 2-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Brand Description:
+                    </div>
+                    <div class="col-sm-8 value-box">
+                        {{carBrand.BrandDesc || "-"}}
+                    </div>
+                </div>
+                <!--space buttom-->
+                <div class="col-sm-12 top-buffer">
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="10">
+            <div>
+                <p>
+                    wait for information
+                </p>
+            </div>
+        </split-area>
+    </split>
+</div>
+<div *ngIf="!carBrand">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    View information of Brand.
+</div>

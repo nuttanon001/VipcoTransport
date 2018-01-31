@@ -1,0 +1,72 @@
+﻿$main-color: #0A7AB2;
+$hover-color: DARKSLATEGRAY;
+$back-color: SNOW;
+
+.navbar {
+    background-color: $main-color;
+}
+
+.navbar-brand {
+    padding: 5px 0px 0px 5px;
+}
+
+.navbar-nav {
+    .header-title {
+        font-size: larger;
+        font-weight: 600;
+    }
+
+    .active {
+        bottom: -.1em;
+        background-color: transparent;
+    }
+
+    li {
+        background-color: $main-color;
+
+        &:hover {
+            bottom: -.1em;
+            background-color: transparent;
+        }
+    }
+
+    button {
+        padding: 8px;
+        color: $back-color;
+
+        &:hover {
+            color: $hover-color;
+            background-color: transparent;
+        }
+
+        &:focus {
+            color: $hover-color;
+            background-color: transparent;
+        }
+    }
+
+    a {
+        color: $back-color;
+        cursor: pointer;
+
+        .active {
+            bottom: -.1em;
+            background-color: transparent;
+        }
+
+        &:hover {
+            color: $hover-color;
+            background-color: transparent;
+        }
+
+        &:focus {
+            color: $hover-color;
+            background-color: transparent;
+        }
+    }
+}
+
+.test {
+    background-color: $main-color;
+}
+

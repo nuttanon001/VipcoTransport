@@ -1,0 +1,110 @@
+﻿/* Structure */
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 50px);
+    height: -webkit-calc(100vh - 80px); /* google, safari */
+    height: calc(100vh - 80px);
+}
+
+.example-header {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    font-size: 20px;
+}
+
+.example-header {
+    min-height: 64px;
+    display: flex;
+    align-items: baseline;
+    padding: 8px 24px 0;
+    font-size: 20px;
+    justify-content: space-between;
+}
+
+.mat-input-container {
+    font-size: 14px;
+    flex-grow: 1;
+    margin-left: 32px;
+}
+
+.mat-table {
+    overflow: auto;
+}
+
+.left-col {
+    left: 0px;
+    padding-right: 10px;
+    padding-left: 0px;
+}
+
+.right-col {
+    padding-left: 10px;
+    padding-right: 55px;
+}
+
+.shadowbox {
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.right-menu {
+    display: table-cell;
+    vertical-align: middle;
+    position: absolute;
+    right: 10px;
+    top: 71px;
+    bottom: 0;
+    background-color: transparent;
+
+    button {
+        vertical-align: middle;
+        display: block;
+    }
+}
+
+.ui-datatable tbody td {
+    white-space: nowrap !important;
+}
+
+.media {
+    height: -webkit-calc(100vh - 90px); /* google, safari */
+    height: calc(100vh - 90px);
+}
+
+.media-right {
+    margin-top: 20px;
+}
+
+.menu-tool {
+    margin-top: 20px;
+}
+
+.hide-table {
+    cursor: pointer;
+    height: 92vh;
+    width: 10px;
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 7px;
+    -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    /*top: 0px;
+    bottom: 0px;
+    width: 10px;
+    background-color: lightgray;
+    cursor: pointer;*/
+}
+
+:host /deep/ .disabled-row {
+    /* TODO: first try this without '!important', but you might need it */
+    color: white;
+    background-color: red !important;
+}
+
+:host /deep/ .enabled-row {
+    /* TODO: first try this without '!important', but you might need it */
+    color: white;
+    background-color: steelblue !important;
+}

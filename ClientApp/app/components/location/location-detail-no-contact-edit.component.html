@@ -1,0 +1,41 @@
+﻿<div *ngIf="location">
+    <form [formGroup]="locationForm" class="form-horizontal detail-edit-content" (ngSubmit)="onCompletedLocation()">
+        <div class="col-sm-12 detail-edit">
+            <div class="col-sm-12 header-detail-edit">
+                <h4>Insert location for system.</h4>
+            </div>
+            <!--Row1-->
+            <div class="form-group form-group-sm">
+
+                <label for="LocationName" class="col-sm-2 control-label"> Location Name : </label>
+                <div class="col-sm-4">
+                    <input class="form-control" type="text" placeholder="Insert location name here."
+                            id="LocationName" formControlName="LocationName" required>
+                    <div *ngIf="formErrors.LocationName" class="alert alert-danger">
+                        {{ formErrors.LocationName }}
+                    </div>
+                </div>
+
+                <label for="LocationAddress" class="col-sm-2 control-label"> Address : </label>
+                <div class="col-sm-4">
+                    <input class="form-control" type="text" placeholder="Insert address here."
+                           id="LocationAddress" formControlName="LocationAddress">
+                    <div *ngIf="formErrors.LocationAddress" class="alert alert-danger">
+                        {{ formErrors.LocationAddress }}
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <!--Row2-->
+            <div class="form-group form-group-sm">
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-success btn-group-sm" [disabled]="!locationForm.valid">Save</button>
+                    <button type="reset" class="btn btn-danger btn-group-sm" style="margin-left:5px;" (click)="onCancelLocation()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div *ngIf="!location">
+    Wait information location.
+</div>

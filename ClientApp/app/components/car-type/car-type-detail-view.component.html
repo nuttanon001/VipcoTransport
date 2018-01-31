@@ -1,0 +1,58 @@
+﻿<div *ngIf="carType" class="detail-content">
+    <split direction="vertical">
+        <split-area [size]="95">
+            <div class="col-sm-12 detail-view">
+                <div class="col-sm-12 header-detail-view">
+                    <h4>Type information</h4>
+                </div>
+                <!--Row 1-->
+                <div class="col-sm-12">
+                    <div class="col-sm-2 display-label">
+                        Type name :
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{carType.CarTypeNo || "-"}}
+                    </div>
+
+                    <div class="col-sm-2 display-label">
+                        Type Description:
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{carType.CarTypeDesc || "-"}}
+                    </div>
+                </div>
+
+                <!--Row 2-->
+                <div class="col-sm-12 top-buffer">
+                    <div class="col-sm-2 display-label">
+                        Vehcile Type:
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{carType.Type === 1 ? 'Car Type' : 'Truck Type'}}
+                    </div>
+
+                    <div class="col-sm-2 display-label">
+                        Remark:
+                    </div>
+                    <div class="col-sm-4 value-box">
+                        {{carType.Remark || "-"}}
+                    </div>
+                </div>
+                <!--space buttom-->
+                <div class="col-sm-12 top-buffer">
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="5">
+            <div>
+                <p>
+                    wait for information
+                </p>
+            </div>
+        </split-area>
+    </split>
+</div>
+<div *ngIf="!carType">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    View information of Type.
+</div>

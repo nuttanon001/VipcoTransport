@@ -1,0 +1,72 @@
+﻿<div *ngIf="driver">
+    <form [formGroup]="driverForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="95">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Driver information</h4>
+                    </div>
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="EmployeeDriveCode" class="col-sm-2 control-label"> Driver Name : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="employees" filter="filter" [style]="{'width':'100%'}"
+                                        id="EmployeeDriveCode" formControlName="EmployeeDriveCode"
+                                        class="form-control no-border" required>
+                            </p-dropdown>
+                        </div>
+
+                        <label for="PhoneNumber" class="col-sm-2 control-label"> Phone Number : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Phone Number"
+                                   id="PhoneNumber" formControlName="PhoneNumber">
+                            <div *ngIf="formErrors.PhoneNumber" class="alert alert-danger">
+                                {{ formErrors.PhoneNumber }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm">
+                        <label for="CarId" class="col-sm-2 control-label"> Car No : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="cars" filter="filter" [style]="{'width':'100%'}"
+                                        id="CarId" formControlName="CarId"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                        </div>
+
+                        <label for="TrailerId" class="col-sm-2 control-label"> Trailer No : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="trailers" filter="filter" [style]="{'width':'100%'}"
+                                        id="TrailerId" formControlName="TrailerId"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                        </div>
+                    </div>
+
+                    <!--Row3-->
+                    <div *ngIf="CanChangeCompany" class="form-group form-group-sm">
+                        <label for="CompanyID" class="col-sm-2 control-label"> Branch : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="companys" filter="filter" [style]="{'width':'100%'}"
+                                        id="CompanyID" formControlName="CompanyID"
+                                        class="form-control no-border">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="5">
+                <div>
+                    <p>wait for information</p>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<div *ngIf="!driver">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of driver.
+</div>

@@ -1,0 +1,66 @@
+﻿<div *ngIf="editValue; else elseBlock" class="panel panel-info">
+    <div class="panel-heading">
+        <h4>Edit information of branch</h4>
+    </div>
+    <div class="panel-body">
+        <form [formGroup]="editValueForm" class="form-horizontal">
+            <!--Row1-->
+            <div class="form-group form-group-sm">
+                <label for="CompanyCode" class="col-sm-1 control-label"> Branch Code : </label>
+                <div class="col-sm-5">
+                    <input class="form-control" type="text" placeholder="input branch code here"
+                           id="CompanyCode" formControlName="CompanyCode" required>
+                    <div *ngIf="formErrors.CompanyCode" class="alert alert-danger">
+                        {{ formErrors.CompanyCode }}
+                    </div>
+                </div>
+
+                <label for="CompanyName" class="col-sm-1 control-label"> Branch Name : </label>
+                <div class="col-sm-5">
+                    <input class="form-control" type="text" placeholder="input branch name here"
+                           id="CompanyName" formControlName="CompanyName" required>
+                    <div *ngIf="formErrors.CompanyName" class="alert alert-danger">
+                        {{ formErrors.CompanyName }}
+                    </div>
+                </div>
+            </div>
+
+            <!--Row2-->
+            <div class="form-group form-group-sm">
+                <label for="Address1" class="col-sm-1 control-label"> Address1 : </label>
+                <div class="col-sm-5">
+                    <input class="form-control" type="text" placeholder="input address 1 here"
+                           id="Address1" formControlName="Address1">
+                    <div *ngIf="formErrors.Address1" class="alert alert-danger">
+                        {{ formErrors.Address1 }}
+                    </div>
+                </div>
+
+                <label for="Address2" class="col-sm-1 control-label"> Address2 : </label>
+                <div class="col-sm-5">
+                    <input class="form-control" type="text" placeholder="input address 2 here"
+                           id="Address2" formControlName="Address2">
+                    <div *ngIf="formErrors.Address2" class="alert alert-danger">
+                        {{ formErrors.Address2 }}
+                    </div>
+                </div>
+            </div>
+
+            <!--Row3-->
+            <div class="form-group form-group-sm">
+                <label for="Telephone" class="col-sm-1 control-label"> Telephone : </label>
+                <div class="col-sm-5">
+                    <input class="form-control" type="text" placeholder="input telephone here"
+                           id="Telephone" formControlName="Telephone">
+                    <div *ngIf="formErrors.Telephone" class="alert alert-danger">
+                        {{ formErrors.Telephone }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <md-progress-bar mode="indeterminate" style="margin-top:50px;"></md-progress-bar>
+    Edit infomation of branch.
+</ng-template>

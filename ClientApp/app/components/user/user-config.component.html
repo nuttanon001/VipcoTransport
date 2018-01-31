@@ -1,0 +1,90 @@
+﻿<div class="example-container small">
+    <div *ngIf="userEdition; else elseBlock" class="panel panel-info">
+        <div class="panel-heading">
+            <h4>Config user infomation</h4>
+        </div>
+        <div class="panel-body">
+            <form [formGroup]="userEditionForm" class="form-horizontal">
+                <!--Row1-->
+                <div class="form-group form-group-sm">
+                    <label for="EmployeeName" class="col-sm-1 control-label"> Name : </label>
+                    <div class="col-sm-5">
+                        <input class="form-control" type="text"
+                                id="EmployeeName" formControlName="EmployeeName" readonly>
+                    </div>
+                    <label for="UserName" class="col-sm-1 control-label"> User : </label>
+                    <div class="col-sm-5">
+                        <input class="form-control" type="text"
+                                id="UserName" formControlName="UserName" readonly>
+                    </div>
+                </div>
+
+                <!--Row2-->
+                <div class="form-group form-group-sm">
+                    <label for="CompanyName" class="col-sm-1 control-label"> Branch : </label>
+                    <div class="col-sm-5">
+                        <input class="form-control" type="text"
+                                id="CompanyName" formControlName="CompanyName" readonly>
+                    </div>
+
+                    <label for="MailAddress" class="col-sm-1 control-label"> Mail : </label>
+                    <div class="col-sm-5">
+                        <input class="form-control" type="text" placeholder="Insert email address here."
+                                id="MailAddress" formControlName="MailAddress" required>
+                        <div *ngIf="formErrors.MailAddress" class="alert alert-danger">
+                            {{ formErrors.MailAddress }}
+                        </div>
+                    </div>
+                </div>
+
+                <!--Row3-->
+                <div class="form-group form-group-sm">
+                    <label for="EmailAlert" class="col-sm-1 control-label"> Mail(Alert) : </label>
+                    <div class="col-sm-4">
+                        <md-checkbox formControlName="EmailAlert">
+                            For transport employee need mail alert
+                        </md-checkbox>
+                    </div>
+                </div>
+
+                <!--Row4-->
+                <div class="form-group form-group-sm">
+                    <label for="PasswordNew" class="col-sm-1 control-label"> New Password : </label>
+                    <div class="col-sm-5">
+                        <input class="form-control" type="password" placeholder="Insert new password here."
+                               id="PasswordNew" formControlName="PasswordNew">
+                        <div *ngIf="formErrors.PasswordNew" class="alert alert-danger">
+                            {{ formErrors.PasswordNew }}
+                        </div>
+                    </div>
+
+                    <label for="PasswordConfirm" class="col-sm-1 control-label">Confirm : </label>
+                    <div class="col-sm-5">
+                        <input class="form-control" type="password" placeholder="Insert confirm password here."
+                               id="PasswordConfirm" formControlName="PasswordConfirm">
+                        <div *ngIf="userEditionForm.controls.PasswordConfirm.errors?.MatchPassword" class="alert alert-danger">
+                            Password not match.
+                        </div>
+                    </div>
+                </div>
+
+                <!--Row5-->
+                <div class="col-sm-offset-5 col-sm-6">
+                    <button type="submit" md-mini-fab color="primary" [disabled]="!userEditionForm.valid"
+                            (click)="onUpdateUserEdition()" mdTooltip="Update user edition">
+                        <i class="fa fa-2x fa-floppy-o" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" md-mini-fab color="warn" style="margin-left:20px;"
+                            [routerLink]="['/home']" mdTooltip="Cancel user edition">
+                        <i class="fa fa-2x fa-minus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <ng-template #elseBlock>
+        <md-progress-bar mode="indeterminate" style="margin-top:50px;"></md-progress-bar>
+        Edit infomation of user.
+    </ng-template>
+</div>
+

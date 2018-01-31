@@ -1,0 +1,93 @@
+﻿<div class="master-content">
+    <split direction="horizontal" [gutterSize]="7" [visibleTransition]="true">
+        <split-area [size]="40"  [visible]="hideleft" [order]="1">
+            <div class="left-col">
+                <div>
+                    <form [formGroup]="transportReqForm" style="width:100%;">
+                        <div>
+                            <!--<md-icon color="primary">search</md-icon>-->
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <md-input-container>
+                                <input formControlName="search" mdInput placeholder="Search here ..." #gb>
+                            </md-input-container>
+                            <md-checkbox formControlName="filterUser" style="margin-left:20px;">
+                                Filter Only User
+                            </md-checkbox>
+                        </div>
+                    </form>
+                </div>
+                <div class="shadowbox small">
+                    <!--scrollable="true" [scrollHeight]="scrollHeight"-->
+                    <p-dataTable [value]="transportReqs" selectionMode="single" resizableColumns="true"
+                                 [(selection)]="transportReq" (onRowSelect)="onDetailView()"
+                                 scrollable="true" [scrollHeight]="scrollHeight"
+                                 [globalFilter]="gb" [rows]="100" virtualScroll="virtualScroll" [lazy]="true" (onLazyLoad)="loadData($event,table)" [totalRecords]="totalRow">
+                        <p-header>There are {{totalRow}} request(s)</p-header>
+                        <p-column field="RowNumber" header="no." [style]="{'width':'5%'}"></p-column>
+                        <p-column field="TransportReqNo" header="Request No." [sortable]="true"></p-column>
+                        <!--<p-column field="DestinationString" header="To" [sortable]="true"></p-column>-->
+                        <p-column field="RequestDateTime" header="Date request" [sortable]="true" ></p-column>
+                        <p-column field="TransportDateTime" header="Date required" [sortable]="true" ></p-column>
+                        <p-column field="EmployeeRequest" header="Employee" [sortable]="true" >
+                            <ng-template let-col let-data="rowData" pTemplate="body">
+                                <span [style.color]="data['Color']">{{data[col.field]}}</span>
+                            </ng-template>
+                        </p-column>
+                        <!--<p-column field="Color" header="Color"></p-column>-->
+                    </p-dataTable>
+                </div>
+            </div>
+        </split-area>
+        <split-area [size]="60" [order]="2">
+            <div class="media">
+                <!--Left-->
+                <div class="media-left">
+                    <div class="hide-table" (click)="hideleft = !hideleft" mdTooltip="Hide/Show Table" mdTooltipPosition="right">
+                    </div>
+                </div>
+                <!--Center-->
+                <div class="media-body">
+                    <div *ngIf="transportReq; else elseBlock">
+                        <div *ngIf="!showEdit; else detailEdit">
+                            <transport-request-detail-view></transport-request-detail-view>
+                        </div>
+                        <ng-template #detailEdit>
+                            <transport-request-detail-edit></transport-request-detail-edit>
+                        </ng-template>
+                    </div>
+                    <ng-template #elseBlock>
+                        <h4>
+                            Selected transport request from list to show information
+                        </h4>
+                    </ng-template>
+                </div>
+                <!--Right-->
+                <div class="media-right">
+                    <div class="menu-tool">
+                        <!--<button type="button" md-mini-fab color="primary" (click)="sidenav.toggle()" mdTooltip="ซ่อนเครื่องมือ" mdTooltipPosition="left">
+                            <md-icon>more_horiz</md-icon>
+                        </button>-->
+                        <button type="button" md-mini-fab color="primary" (click)="onDetailEdit()" [disabled]="showEdit" mdTooltip="Create new" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="primary" (click)="onDetailEdit(transportReq)" [disabled]="showEdit || TransportReqNull" mdTooltip="Edit" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <hr />
+                        <button type="button" md-mini-fab color="warn" (click)="onCancelEdit()" [disabled]="!showEdit" mdTooltip="Cancel" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-minus" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" md-mini-fab color="accent" (click)="onSubmit()" [disabled]="!canSave" mdTooltip="Save" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-floppy-o" aria-hidden="true"></i>
+                        </button>
+                        <hr />
+                        <!--<button type="button" md-mini-fab color="primary" (click)="getTransprotDataByTransportRequestedID(transportReq)" [disabled]="TransportReqStatus"
+                                mdTooltip="ข้อมูลเดินรถ" mdTooltipPosition="left">
+                            <i class="fa fa-2x fa-link" aria-hidden="true"></i>
+                        </button>-->
+                    </div>
+                </div>
+            </div>
+        </split-area>
+    </split>
+</div>

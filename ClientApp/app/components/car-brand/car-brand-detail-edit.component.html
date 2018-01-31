@@ -1,0 +1,46 @@
+﻿<div *ngIf="carBrand">
+    <form [formGroup]="carBrandForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="90">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Brand information</h4>
+                    </div>
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="BrandName" class="col-sm-2 control-label"> Brand Name : </label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" placeholder="Brand Name" required
+                                   id="BrandName" formControlName="BrandName">
+                            <div *ngIf="formErrors.BrandName" class="alert alert-danger">
+                                {{ formErrors.BrandName }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="BrandDesc" class="col-sm-2 control-label"> Brand Description : </label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" placeholder="Brand Description"
+                                   id="BrandDesc" formControlName="BrandDesc">
+                            <div *ngIf="formErrors.BrandDesc" class="alert alert-danger">
+                                {{ formErrors.BrandDesc }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="10">
+                <div>
+                    <p>wait for information</p>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<div *ngIf="!carBrand">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of brand.
+</div>

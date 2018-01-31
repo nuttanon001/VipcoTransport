@@ -1,0 +1,97 @@
+﻿.detail-edit-content {
+    height: 88vh;
+}
+
+@media all and (min-width: 1360px) {
+    .detail-edit-content {
+        height: 83vh;
+    }
+}
+
+@media all and (min-width: 1600px) {
+    .detail-edit-content {
+        height: 88vh;
+    }
+}
+
+
+.header-detail-edit {
+    margin-bottom: 10px;
+    /*background-color: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    p {
+        color: darkgray;
+    }
+
+    h4 {
+        color: darkcyan;
+    }
+}
+
+.detail-edit {
+    background-color: white;
+    font-size: smaller;
+
+    .is-request-date {
+        color: red;
+        margin-left: 30px;
+    }
+
+    .is-request {
+        color: red;
+        margin-left: 2px;
+    }
+
+    label {
+        text-align: right;
+    }
+
+    .label-click {
+        color:blue;
+        cursor:pointer;
+    }
+
+    .form-group-sm {
+        margin-bottom: 5px;
+    }
+
+    .no-border {
+        margin: -20px 0px,0px 0px; /*t,r,b,l*/
+        padding: 0;
+        float: left;
+        border: 0;
+        box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+    }
+
+    .size-img {
+        height: auto;
+        max-width: 300px;
+    }
+
+    .alert-danger {
+        font-size: smaller;
+    }
+
+    .ng-valid[required], .ng-valid.required {
+        border-bottom: 2px solid #42A948; /* green */
+    }
+
+    .ng-invalid:not(form) {
+        border-bottom: 2px solid #a94442; /* red */
+    }
+
+    .well {
+
+        .d1 {
+            background-color: lightgray;
+        }
+
+        .d2 {
+            background-color: lightyellow;
+        }
+    }
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}

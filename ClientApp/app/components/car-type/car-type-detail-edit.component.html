@@ -1,0 +1,66 @@
+﻿<div *ngIf="carType">
+    <form [formGroup]="carTypeForm" class="form-horizontal detail-edit-content">
+        <split direction="vertical">
+            <split-area [size]="95">
+                <div class="col-sm-12 detail-edit">
+                    <div class="col-sm-12 header-detail-edit">
+                        <h4>Type information</h4>
+                    </div>
+                    <!--Row1-->
+                    <div class="form-group form-group-sm">
+                        <label for="CarTypeNo" class="col-sm-2 control-label"> Type no : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Type no" required
+                                   id="CarTypeNo" formControlName="CarTypeNo"
+                                   [readonly]="carTypeForm.controls.Creator.value !== null">
+                            <div *ngIf="formErrors.CarTypeNo" class="alert alert-danger">
+                                {{ formErrors.CarTypeNo }}
+                            </div>
+                        </div>
+
+                        <label for="CarTypeDesc" class="col-sm-2 control-label"> Type Description : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Type Name" required
+                                   id="CarTypeDesc" formControlName="CarTypeDesc">
+                            <div *ngIf="formErrors.CarTypeDesc" class="alert alert-danger">
+                                {{ formErrors.CarTypeDesc }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row2-->
+                    <div class="form-group form-group-sm top-buffer">
+                        <label for="Type" class="col-sm-2 control-label"> Vehicle Type : </label>
+                        <div class="col-sm-4">
+                            <p-dropdown [options]="vehicleTypes" filter="filter" [style]="{'width':'100%'}" required
+                                        id="Type" formControlName="Type">
+                            </p-dropdown>
+                            <div *ngIf="formErrors.Type" class="alert alert-danger">
+                                {{ formErrors.Type }}
+                            </div>
+                        </div>
+
+                        <label for="Remark" class="col-sm-2 control-label"> Remark : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" placeholder="Remark"
+                                   id="Remark" formControlName="Remark">
+                            <div *ngIf="formErrors.Remark" class="alert alert-danger">
+                                {{ formErrors.Remark }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </split-area>
+
+            <split-area [size]="5">
+                <div>
+                    <p>wait for information</p>
+                </div>
+            </split-area>
+        </split>
+    </form>
+</div>
+<div *ngIf="!carType">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    Edit infomation of car type.
+</div>
